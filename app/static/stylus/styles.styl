@@ -1,0 +1,90 @@
+@import 'fonts'
+//colores
+c-celeste = #0A6EBD
+c-negro = #000000
+c-rojo = #EA5455
+c-plomo = #393E46
+c-plomo-oscuro = #1c2833
+c-blanco = #fff
+//fuente
+
+lato = 'Lato', sans-serif;
+open-san = 'Open Sans', sans-serif;
+//clases generales
+
+*
+    margin 0px
+    padding 0px
+
+ul li
+    list-style-type none
+
+a
+    text-decoration none
+.cnt-general
+    width 98%
+    max-width 1020px
+    margin auto
+
+/*********** HEADER ************/
+
+header
+    position fixed
+    top 0px
+    z-index 1100
+
+    background c-plomo
+    width 100%
+
+    &:before
+        content ""
+    .cnt-general
+        display flex
+        align-items center
+        justify-content space-between
+        h1.logo
+            font-size 22px
+            font-family lato
+            color c-blanco
+        nav.menu-principal
+
+
+            ul
+                display flex
+
+                align-items center
+                justify-content space-around
+                li
+
+                    a
+                        display block
+                        padding 20px 20px
+                        color c-blanco
+                        font-family lato
+                        font-size 18px
+                        transition .2s all ease
+                        font-weight 400
+                        border-bottom 5px solid transparent
+                    &:hover
+                        a
+                            background c-rojo
+
+
+
+
+
+#perfil
+    margin-top 100px
+    .cnt-general
+        display flex
+        align-items center
+        figure
+            margin-right 60px
+            width 250px
+            img
+                border-radius 50%
+                width 250px
+                height auto
+        .descripcion
+            font-size 17px
+            font-family lato
