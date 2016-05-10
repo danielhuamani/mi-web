@@ -9,7 +9,7 @@ c-blanco = #fff
 //fuente
 
 lato = 'Lato', sans-serif;
-open-san = 'Open Sans', sans-serif;
+roboto = 'Roboto', sans-serif;
 //clases generales
 
 *
@@ -43,7 +43,7 @@ header
         align-items center
         justify-content space-between
         h1.logo
-            font-size 22px
+            font-size 28px
             font-family lato
             color c-blanco
         nav.menu-principal
@@ -74,10 +74,28 @@ header
 
 
 #perfil
-    margin-top 100px
+    background-image url("../img/perfil-2.jpeg")
+    margin-top 66px
+    padding-top 30px
+    padding-bottom 30px
+    background-size cover
+    position relative
+
+    &:after
+        content ""
+        width 100%
+        height 100%
+        background black
+        opacity 0.6
+        position absolute
+        top 0px
+        left 0px
     .cnt-general
+        position relative
+        z-index 2
         display flex
         align-items center
+
         figure
             margin-right 60px
             width 250px
@@ -86,5 +104,45 @@ header
                 width 250px
                 height auto
         .descripcion
-            font-size 17px
+            font-size 20px
+            color white
+            line-height 26px
             font-family lato
+#skill
+    margin-top 30px
+    margin-bottom 30px
+    .title
+        font-family lato
+        text-align center
+        font-size 30px
+        color c-rojo
+        font-weight bold
+        margin-bottom 30px
+    .cnt-skills
+        display flex
+        justify-content space-between
+        flex-wrap wrap
+        align-items flex-end
+        .skill
+            margin 10px 10px
+            padding 0px 15px
+
+            figure
+                img
+                    display block
+                    width 100px
+                    height auto
+            .skill-title
+                padding 10px 0px
+                text-align center
+                font-family lato
+            p
+                font-family roboto
+                text-align center
+                display block
+                margin-bottom 5px
+            span
+                background c-rojo
+                height 5px
+                width 100%
+                display block
