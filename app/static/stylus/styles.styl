@@ -3,13 +3,13 @@
 c-celeste = #0A6EBD
 c-negro = #000000
 c-rojo = #EA5455
-c-plomo = #393E46
-c-plomo-oscuro = #1c2833
+c-plomo = #1c2833
 c-blanco = #fff
+c-crema = #f6f6f6
 //fuente
 
 lato = 'Lato', sans-serif;
-roboto = 'Roboto', sans-serif;
+open = 'Open Sans', sans-serif;
 //clases generales
 
 *
@@ -26,6 +26,18 @@ a
     max-width 1020px
     margin auto
 
+.btn
+    padding 8px 15px
+    font-family lato
+    border-radius 4px
+
+.btn-primary
+    background c-plomo
+    color c-blanco
+
+    transition 0.3s ease all
+    &:hover
+        background c-rojo
 /*********** HEADER ************/
 
 header
@@ -33,7 +45,7 @@ header
     top 0px
     z-index 1100
 
-    background c-plomo
+    background #1c2833
     width 100%
 
     &:before
@@ -43,7 +55,7 @@ header
         align-items center
         justify-content space-between
         h1.logo
-            font-size 28px
+            font-size 32px
             font-family lato
             color c-blanco
         nav.menu-principal
@@ -73,7 +85,7 @@ header
 
 
 
-#perfil
+#presentacion
     background-image url("../img/perfil-2.jpeg")
     margin-top 66px
     padding-top 30px
@@ -171,49 +183,98 @@ header
             color white
             line-height 28px
             font-family lato
-#skill
-    margin-top 30px
-    margin-bottom 30px
-    .title
-        font-family lato
+h2.title
+    margin-bottom 50px
+    display inline-block
+    padding 0px 20px
+    font-size 30px
+    color c-plomo
+    font-family lato
+    border-bottom 2px solid c-rojo
+#perfil
+    background c-crema
+    padding-top 50px
+    padding-bottom 30px
+    .cnt-general
         text-align center
-        font-size 30px
-        color c-rojo
-        font-weight bold
-        margin-bottom 30px
-    .cnt-skills
-        display flex
-        justify-content space-between
-        flex-wrap wrap
-        align-items flex-end
-        .skill
-            margin 10px 10px
-            padding 10px 15px
-            width 120px
+        .descripcion
+            font-family open
+        .detalle-avatar
+            margin-top 40px
+            display flex
+            justify-content center
             figure
-
-                padding-top 5px
-                img
-                    display block
-                    width 100%
-                    height auto
-                    margin auto
-            .puntaje
-                background #F9F7F7
-                padding-top 5px
-                border-top 5px solid c-rojo
-                .skill-title
-
-                    padding 10px 0px
-                    text-align center
-                    font-family lato
+                margin-right 40px
+            .detalle
+                text-align left
+                ul
+                    li
+                        font-size 14px
+                        margin 10px 0px
+                        font-family open
+                        span
+                            font-weight bold
+                .descargar-cv
+                    margin-top 20px
+            .educacion
+                text-align left
+                margin-top 7px
+                margin-left 40px
+                font-family lato
                 p
-                    font-family roboto
-                    text-align center
-                    display block
-                    margin-bottom 5px
-                span
-                    background c-rojo
-                    height 5px
-                    width 100%
-                    display block
+                    margin-top 5px
+                    margin-bottom 5PX
+                    font-family open
+                    font-size 14px
+#experiencia
+    padding-top 50px
+    .cnt-general
+        text-align center
+        .cnt-exp
+            display flex
+            flex-wrap wrap
+            justify-content space-between
+            .exp
+                max-width 450px
+                display flex
+                margin 0px 20px 20px 20px
+                background c-crema
+                border 1px solid c-plomo
+                border-radius 4px
+                transition 0.3s ease all
+                transform scale(1)
+                &:hover
+                    box-shadow 1px 1px 2px c-plomo
+                figure
+                    width 150px
+                    img
+                        width 100%
+                        height auto
+                        display block
+                .descripcion
+                    padding 10px
+                    text-align left
+                    a.titulo-exp
+                        font-family lato
+                        display block
+                        margin-bottom 5px
+                        font-size 16px
+                        color c-plomo
+                        transition 0.3s eaes all
+                        font-weight bold
+                        &:hover
+                            color c-rojo
+                    .labor
+                        font-family open
+                        font-size 14px
+                        text-align justify
+                        margin-bottom 10px
+                    .periodo
+                        display flex
+                        justify-content space-between
+                        .inicio
+                            font-family open
+                            font-size 14px
+                        .fin
+                            font-family open
+                            font-size 14px
