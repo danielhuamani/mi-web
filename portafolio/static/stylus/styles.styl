@@ -1,0 +1,481 @@
+@import 'fonts'
+//colores
+c-celeste = #0A6EBD
+c-negro = #000000
+c-rojo = #EA5455
+c-plomo = #1c2833
+c-blanco = #fff
+c-crema = #f6f6f6
+//fuente
+
+lato = 'Lato', sans-serif;
+open = 'Open Sans', sans-serif;
+//clases generales
+
+*
+    margin 0px
+    padding 0px
+
+ul li
+    list-style-type none
+
+a
+    text-decoration none
+.cnt-general
+    width 98%
+    max-width 1020px
+    margin auto
+
+.btn
+    padding 8px 15px
+    font-family lato
+    border-radius 4px
+
+.btn-primary
+    background c-plomo
+    color c-blanco
+
+    transition 0.3s ease all
+    &:hover
+        background c-rojo
+/*********** HEADER ************/
+
+header
+    position fixed
+    top 0px
+    z-index 1100
+
+    background #1c2833
+    width 100%
+
+    &:before
+        content ""
+    .cnt-general
+        display flex
+        align-items center
+        justify-content space-between
+        h1.logo
+            font-size 32px
+            font-family lato
+            color c-blanco
+        nav.menu-principal
+
+
+            ul
+                display flex
+
+                align-items center
+                justify-content space-around
+                li
+
+                    a
+                        display block
+                        padding 20px 20px
+                        color c-blanco
+                        font-family lato
+                        font-size 18px
+                        transition .2s all ease
+                        font-weight 400
+                        border-bottom 5px solid transparent
+                    &:hover
+                        a
+                            background c-rojo
+
+
+
+
+
+#presentacion
+    background-image url("../img/perfil-2.jpeg")
+    margin-top 66px
+    padding-top 30px
+    padding-bottom 30px
+    background-size cover
+    position relative
+    height 300px
+    &:after
+        content ""
+        width 100%
+        height 100%
+        background black
+        opacity 0.6
+        position absolute
+        top 0px
+        left 0px
+    .cnt-general
+        position relative
+        z-index 2
+        display flex
+        align-items center
+        height 100%
+        justify-content center
+        .links
+            margin-top 40px
+            ul
+                display flex
+                justify-content space-around
+                li
+                    margin 0px 10px
+                    a
+                        border-radius 5px
+                        transition 0.3s ease all
+                        padding 8px 10px 5px 10px
+                        font-size 24px
+                        i
+                            color white
+                    a.bitbucket:hover
+                        background #205081
+                    a.github:hover
+                        background black
+                    a.facebook:hover
+                        background #365899
+                    a.youtube:hover
+                        background #cc181e
+                    a.linkedin:hover
+                        background #00a0dc
+        .page
+            padding 30px 50px
+            position relative
+            border 1px solid c-blanco
+            border-bottom none
+            &:after
+                content ""
+                left 0px
+                bottom 0px
+                position absolute
+                width 50px
+                height 1px
+                background white
+            &:before
+                content ""
+                right 0px
+                bottom 0px
+                position absolute
+                width 50px
+                height 1px
+                background white
+            h2
+                color c-blanco
+                font-family lato
+                font-size 42px
+                text-align center
+                margin-bottom 10px
+            h3
+                color c-blanco
+                font-family lato
+                font-size 28px
+                text-align center
+                position absolute
+                bottom -12px
+                left 0px
+                right 0px
+                margin auto
+                letter-spacing 2px
+        figure
+            margin-right 60px
+            width 250px
+            img
+                border-radius 50%
+                width 250px
+                height auto
+        .descripcion
+            font-size 20px
+            color white
+            line-height 28px
+            font-family lato
+h2.title
+    margin-bottom 50px
+    display inline-block
+    padding 0px 20px
+    font-size 30px
+    color c-plomo
+    font-family lato
+    border-bottom 2px solid c-rojo
+#perfil
+    background c-crema
+    padding-top 50px
+    padding-bottom 30px
+    .mis-hablidades
+        margin-top 50px
+        .cnt-skill
+            display flex
+            justify-content space-between
+            flex-wrap wrap
+            .skil
+                border-radius 5px
+                width 28%
+                margin 0px 0px 20px 0px
+
+                background c-plomo
+
+                .title-skill
+                    background c-rojo
+                    text-align left
+
+                    color white
+                    width 60%
+                    border-radius 5px
+                    padding 8px 0px 8px 15px
+                    span
+                        text-transform uppercase
+                        display inline-block
+                        font-family lato
+                        i
+                            font-size 20px
+    .cnt-general
+        text-align center
+        .descripcion
+            font-family open
+        .detalle-avatar
+            margin-top 40px
+            display flex
+            justify-content center
+            figure
+                margin-right 40px
+            .detalle
+                text-align left
+                ul
+                    li
+                        font-size 14px
+                        margin 10px 0px
+                        font-family open
+                        span
+                            font-weight bold
+                .descargar-cv
+                    margin-top 20px
+            .educacion
+                text-align left
+                margin-top 7px
+                margin-left 40px
+                font-family lato
+                p
+                    margin-top 5px
+                    margin-bottom 5PX
+                    font-family open
+                    font-size 14px
+#experiencia
+    padding-top 50px
+    .cnt-general
+        text-align center
+        .cnt-exp
+            display flex
+            flex-wrap wrap
+            justify-content space-between
+            .exp
+                max-width 300px
+                display flex
+                height 120px
+                margin 0px 10px 20px 10px
+                background c-crema
+                border 1px solid c-plomo
+                border-radius 4px
+                transition 0.3s ease all
+                transform scale(1)
+                &:hover
+                    box-shadow 1px 1px 2px c-plomo
+                figure
+                    width 200px
+                    img
+                        width 100%
+                        height auto
+                        display block
+                .descripcion
+                    padding 10px
+                    text-align left
+                    position relative
+                    color black
+                    .titulo-exp
+                        font-family lato
+                        display block
+                        margin-bottom 5px
+                        font-size 16px
+                        color c-plomo
+                        transition 0.3s eaes all
+                        font-weight bold
+                        &:hover
+                            color c-rojo
+                    .labor
+                        font-family open
+                        font-size 14px
+                        text-align justify
+                        margin-bottom 10px
+                    .periodo
+                        color black
+                        position absolute
+                        left 0px
+                        right 0px
+                        margin auto
+                        margin 0px 10px
+                        bottom 5px
+                        display flex
+                        justify-content space-between
+                        .inicio
+                            font-family open
+                            font-size 14px
+                        .fin
+                            font-family open
+                            font-size 14px
+#portafolio
+    text-align center
+    margin-top 20px
+    .categorias
+        margin-bottom 50px
+        ul
+            display flex
+            justify-content center
+            li
+                margin 0px 20px
+                a
+                    padding 5px 12px
+                    border-radius 5px
+                    color white
+                    background c-plomo
+                    font-family lato
+                    transition 0.3s ease all
+                    &:hover
+                        background c-rojo
+                a.active
+                    background c-rojo
+    .proyectos
+        display flex
+        flex-wrap wrap
+        justify-content space-between
+        .proyecto
+            margin 0px 20px 20px 20px
+            position relative
+            cursor pointer
+            figure
+
+                img
+                    display block
+            h3.titulo-proyecto
+                position absolute
+                left 0px
+                right 0px
+                margin auto
+                top 30%
+                font-family lato
+                opacity 0
+                z-index 20
+                transition 0.4s ease all
+                color c-blanco
+                padding 0px 10px
+                font-size 18px
+            .capa
+                background c-rojo
+                position absolute
+                left 0px
+                right 0px
+                margin auto
+                top 0
+                height 100%
+                width 100%
+                opacity 0
+                z-index 10
+                transition 0.2s ease all
+            &:hover
+                .capa
+                    opacity 0.7
+                h3.titulo-proyecto
+                    opacity 1
+                    top 45%
+    .paginacion
+        margin-top 20px
+
+        ul
+            display flex
+            justify-content center
+            li
+                margin 0px 8px
+                a
+                    font-size 17px
+                    border-radius 4px
+                    padding 6px 10px
+                    background c-plomo
+                    color white
+                    transition 0.3s ease all
+                    font-family lato
+                    &:hover
+                        background c-rojo
+section#contacto
+    text-align center
+    background-image url("../img/img-contacto.jpg")
+    padding-top 30px
+    padding-bottom 30px
+    margin-top 40px
+    background-size cover
+    position relative
+    height 400px
+    &:after
+        content ""
+        width 100%
+        height 100%
+        background black
+        opacity 0.6
+        position absolute
+        top 0px
+        left 0px
+    .cnt-general
+        z-index 2
+        position relative
+        h2.title
+            color white
+        .descripcion
+            color white
+            font-size 16px
+            max-width 800px
+            margin auto
+            font-family open
+            margin-bottom 40px
+            text-align justify
+        form
+            display flex
+            justify-content space-between
+            flex-wrap wrap
+            .cnt-input
+                margin-right 20px
+                width 55%
+                input
+                    padding-left 5px
+                    font-family lato
+                    margin-bottom 10px
+                    border none
+                    height 30px
+                    border-radius 4px
+                    width 100%
+                    color c-plomo
+                    font-size 16px
+            .cnt-area
+                width 40%
+                textarea
+                    padding-left 5px
+                    padding-top 4px
+                    font-family lato
+                    border-radius 4px
+                    width 100%
+                    height 105px
+                    color c-plomo
+                    font-size 16px
+
+            .cnt-button
+                button
+                    font-family lato
+                    border none
+                    padding 5px 15px
+                    cursor pointer
+                    font-size 16px
+                    color white
+                    border-radius 4px
+                    transition 0.3s ease all
+                    background c-rojo
+                    &:hover
+                      background c-plomo
+
+
+footer
+    padding 10px 0px
+    background c-plomo
+    color white
+    .copyright
+        font-size 16px
+        font-family lato

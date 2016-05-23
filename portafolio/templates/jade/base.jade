@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        title Document
+        link(rel="stylesheet", href="../../static/css/styles.css")
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css"/>
+        link(rel="stylesheet", href="../../static/css/slick-theme.css")
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans|Lato' rel='stylesheet' type='text/css'>
+    body
+        .cnt-wrapper
+            header
+                .cnt-general
+                    h1.logo.
+                        Daniel Huamani
+
+                    nav.menu-principal
+                        ul
+
+                            li
+                                a(href="") Perfil
+                            li
+                                a(href="") Experiencia
+                            li
+                                a(href="") Portafolio
+                            li
+                                a(href="") Contacto
+                            li
+                                a(href="") Certificados
+                            li
+                                a(href="") Blog
+            block content
+            footer
+                .cnt-general
+                    .copyright.
+                        Daniel Huamani
+
+
+        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.min.js"></script>
+        script(type='text/javascript').
+            $('.cnt-slider').slick({
+                dots: true,
+                //- infinite: true,
+                speed: 500,
+                fade: true,
+                cssEase: 'linear'
+            });
