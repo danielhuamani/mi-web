@@ -19,6 +19,7 @@
   "devDependencies": {
     "connect-history-api-fallback": "^1.1.0",
     "gulp": "^3.9.0",
+    "gulp-browserify": "^0.5.1",
     "gulp-concat": "^2.6.0",
     "gulp-connect": "^2.3.1",
     "gulp-jade": "^1.1.0",
@@ -29,6 +30,9 @@
     "st": "^1.1.0"
   },
   "dependencies": {
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "gulp-typescript": "^2.13.4",
     "jade": "^1.11.0",
     "plumber": "^0.4.8"
   }

@@ -11,5 +11,5 @@ from .views import perfil, home
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     url(r'^api/perfil/$', perfil, name="perfil"),
-    url(r'$', home, name="home"),
+    url(r'^$', home, name="home"),
 ]
