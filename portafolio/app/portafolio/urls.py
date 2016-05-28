@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
 from rest_framework import routers
-from .views import perfil, home
+from .views import perfil, home, redes
 
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -11,5 +11,6 @@ from .views import perfil, home
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     url(r'^api/perfil/$', perfil, name="perfil"),
+    url(r'^api/redes/$', redes, name="redes"),
     url(r'^$', home, name="home"),
 ]

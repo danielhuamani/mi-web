@@ -25,5 +25,13 @@ def perfil(request):
         return Response(lista)
 
 
+@api_view(['GET', 'POST'])
+def redes(request):
+    if request.method == "GET":
+        redes_r, create_r = Redes.objects.get_or_create(pk=1)
+        serializer_r = RedesSerializers(redes_r)
+        return Response(serializer_r.data)
+
+
 def home(request):
     return render(request, "jade/perfil.jade", locals())
