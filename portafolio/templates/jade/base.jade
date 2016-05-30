@@ -5,15 +5,18 @@ html(lang="en")
         meta(charset="UTF-8")
         title Document
         link(rel="stylesheet", href="../../static/css/styles.css")
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css"/>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans|Lato' rel='stylesheet' type='text/css'>
-        <script src="{{STATIC_URL}}js/riot.js"></script>
+        <script src="{{STATIC_URL}}js/react.js"></script>
+        <script src="{{STATIC_URL}}js/react-dom.js"></script>
+        <script src="{{STATIC_URL}}js/browser.min.js"></script>
         <script src="{{STATIC_URL}}bower_components/jquery/dist/jquery.js"></script>
         <script src="{{STATIC_URL}}bower_components/underscore/underscore.js"></script>
         <script src="{{STATIC_URL}}bower_components/backbone/backbone.js"></script>
 
+
         //- script(src="{{STATIC_URL}}app/app.js")
-    body
+    body#cnt-perfil
+
 
         .cnt-wrapper
             header
@@ -36,13 +39,17 @@ html(lang="en")
                                 a(href="") Certificados
                             li
                                 a(href="") Blog
+            section#presentacion
+                .cnt-general
+
             block content
             footer
                 .cnt-general
                     .copyright.
                         Daniel Huamani
 
-
-
-        <script src="{{STATIC_URL}}app/models.js"></script>
-        <script src="{{STATIC_URL}}app/vistas.js"></script>
+        <script src="{{STATIC_URL}}app/models.js" ></script>
+        <script src="{{STATIC_URL}}app/collections.js" ></script>
+        <script src="{{STATIC_URL}}app/vistas.js" ></script>
+        <script src="{{STATIC_URL}}app/rutas.js" ></script>
+        <script src="{{STATIC_URL}}app/presentacion.js" type="text/babel"></script>
