@@ -9,12 +9,25 @@ var ts = require('gulp-typescript');
 var babelify = require('babelify');
 var browserify = require('gulp-browserify');
 var historyApiFallback = require('connect-history-api-fallback');
+var babel = require('gulp-babel');
 var directorio = {
 
   jade: ['app/templates/jade/*.jade'],
   stylus: ['app/static/stylus/styles.styl']
 
 };
+
+
+
+gulp.task("babel", function(){
+  return gulp.src("portafolio/static/jsx/*.jsx")
+      .pipe(plumber())
+      .pipe(babel({
+          plugins: ['transform-react-jsx']
+      }))
+      .pipe(gulp.dest("portafolio/static/app/"))
+      .pipe(connect.reload());
+});
 
 gulp.task('stylus', function () {
   gulp.src(directorio.stylus)
@@ -28,13 +41,6 @@ gulp.task('stylus', function () {
 });
 
 
-gulp.task('browserify', function () {
-  gulp.src('app/static/js/*.js')
-    .pipe(browserify({
-      transform: ['babelify'],
-    }))
-    .pipe(gulp.dest('app/static/js/*.js'))
-});
 gulp.task('templates', function() {
 
   return gulp.src(directorio.jade)
@@ -60,7 +66,9 @@ gulp.task('watch', function() {
 	gulp.watch('app/static/stylus/styles.styl', ['stylus']),
 	gulp.watch('app/templates/jade/*.jade', ['templates'])
   gulp.watch('app/static/ts/*.ts', ['typescript'])
-  gulp.watch('app/static/js/*.js', ['browserify'])
+  gulp.watch('portafolio/static/jsx/*.jsx', ['babel'])
+
+
 });
 
 //creacioon  del server para el livereload
@@ -77,5 +85,5 @@ gulp.task('connect', function() {
     }
   });
 });
-gulp.task('default', ['stylus', 'templates', 'typescript', 'watch', 'connect']);
+gulp.task('default', ['stylus', 'templates', 'typescript', 'watch', 'connect', 'babel']);
 //creacioon  del server para el livereload

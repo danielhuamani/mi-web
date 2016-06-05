@@ -10,6 +10,7 @@ var app = app || {};
 		}
 	});
 	var rutas = new app.Rutas();
+
 	Backbone.history.start();
 	Backbone.history.navigate('home', {trigger: true});
 })();
