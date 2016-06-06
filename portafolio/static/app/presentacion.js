@@ -3,20 +3,10 @@ var app = app || {};
 (function () {
   "use strict";
 
-  var PresentacionReact = React.createClass({
+  app.PresentacionRedesReact = React.createClass({
 
-    componentDidMount: function () {
-      console.log("sada");
-      console.log(this.props.redes.fetch());
-    },
     render: function () {
       var red = this.props.redes;
-      console.log("---------");
-      console.log(this.props.redes.fetch());
-      console.log(red);
-      console.log(red.attributes);
-
-      console.log(red.get("youtube"));
       var youtube = red.get("youtube");
       var bitbucket = red.get("bitbucket");
       var github = red.get("github");
@@ -51,7 +41,7 @@ var app = app || {};
               null,
               React.createElement(
                 "a",
-                { href: this.props.redes.get('bitbucket'), className: "bitbucket" },
+                { targe: "_blank", href: bitbucket, className: "bitbucket" },
                 React.createElement("i", { className: "icon-bitbucket" })
               )
             ),
@@ -60,7 +50,7 @@ var app = app || {};
               null,
               React.createElement(
                 "a",
-                { href: this.props.redes.get("facebook"), className: "facebook" },
+                { targe: "_blank", href: facebook, className: "facebook" },
                 React.createElement("i", { className: "icon-facebook" })
               )
             ),
@@ -69,7 +59,7 @@ var app = app || {};
               null,
               React.createElement(
                 "a",
-                { href: this.props.redes.get("github"), className: "github" },
+                { targe: "_blank", href: github, className: "github" },
                 React.createElement("i", { className: "icon-github" })
               )
             ),
@@ -78,7 +68,7 @@ var app = app || {};
               null,
               React.createElement(
                 "a",
-                { href: youtube, className: "youtube" },
+                { targe: "_blank", href: youtube, className: "youtube" },
                 React.createElement("i", { className: "icon-youtube" })
               )
             ),
@@ -87,7 +77,7 @@ var app = app || {};
               null,
               React.createElement(
                 "a",
-                { href: linkedin, className: "linkedin" },
+                { targe: "_blank", href: linkedin, className: "linkedin" },
                 React.createElement("i", { className: "icon-linkedin2" })
               )
             )
@@ -96,5 +86,110 @@ var app = app || {};
       );
     }
   });
-  ReactDOM.render(React.createElement(PresentacionReact, { redes: app.red }), document.querySelector("#presentacion .cnt-general"));
+  app.PresentacionPerfilReact = React.createClass({
+    render: function () {
+      var perfil = this.props.perfil;
+
+      return React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "div",
+          { className: "descripcion" },
+          "Jover estudiante de la universidad Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto quis velit, dolores. Iusto culpa numquam quas ullam illum aliquam tempore corporis dolorum, perferendis, reprehenderit velit ea quasi, non pariatur eius."
+        ),
+        React.createElement(
+          "div",
+          { className: "detalle-avatar" },
+          React.createElement(
+            "figure",
+            null,
+            React.createElement("img", { src: "../../static/img/avatar.png", width: "200" })
+          ),
+          React.createElement(
+            "div",
+            { className: "detalle" },
+            React.createElement(
+              "ul",
+              null,
+              React.createElement(
+                "li",
+                null,
+                React.createElement(
+                  "span",
+                  null,
+                  "Nombre: "
+                ),
+                " ",
+                perfil.get('nombre')
+              ),
+              React.createElement(
+                "li",
+                null,
+                React.createElement(
+                  "span",
+                  null,
+                  "Fecha Nacimiento: "
+                ),
+                " 15/04/1994"
+              ),
+              React.createElement(
+                "li",
+                null,
+                React.createElement(
+                  "span",
+                  null,
+                  "Celular: "
+                ),
+                " 959479450"
+              ),
+              React.createElement(
+                "li",
+                null,
+                React.createElement(
+                  "span",
+                  null,
+                  "Email: "
+                ),
+                " danielhuamani15@gmail.com"
+              )
+            ),
+            React.createElement(
+              "div",
+              { className: "descargar-cv" },
+              React.createElement(
+                "a",
+                { href: "", className: "btn btn-primary" },
+                "Descargar CV"
+              )
+            )
+          ),
+          React.createElement(
+            "div",
+            { className: "educacion" },
+            React.createElement(
+              "h3",
+              { className: "titulo-educacion" },
+              "I.E.P Carlos Izaguirre"
+            ),
+            React.createElement(
+              "p",
+              null,
+              "2005 - 2010"
+            ),
+            React.createElement(
+              "h3",
+              { className: "titulo-educacion" },
+              "Universidad Nacional del Callao"
+            ),
+            React.createElement(
+              "p",
+              null,
+              "2011 - 2016"
+            )
+          )
+        )
+      );
+    }
+  });
 })();

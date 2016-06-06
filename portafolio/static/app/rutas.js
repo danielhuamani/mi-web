@@ -5,7 +5,7 @@ var app = app || {};
 		routes: {
 			'/': 'home'
 		},
-		home: function(){
+		'home': function(){
 			console.log("tos");
 		}
 	});

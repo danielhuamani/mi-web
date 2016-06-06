@@ -12,6 +12,14 @@ var app = app || {};
             console.log("iniciando la colecion");
         }
     })
-    app.todos = new RedesCollection();
+    app.redes = new RedesCollection();
+	var PerfilCollection = Backbone.Collection.extend({
 
+        url: "/api/perfil/",
+        model: app.PerfilModel,
+        initialize: function(){
+            console.log("iniciando la colecion perfil");
+        }
+    })
+    app.perfil = new PerfilCollection();
 })();

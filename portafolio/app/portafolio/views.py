@@ -12,17 +12,7 @@ def perfil(request):
     if request.method == "GET":
         perfil_c, create = Perfil.objects.get_or_create(pk=1)
         serializer = PerfilSerializer(perfil_c)
-        redes_r, create_r = Redes.objects.get_or_create(pk=1)
-        serializer_r = RedesSerializers(redes_r)
-        estudios = Estudios.objects.all()
-        serializer_e = EstudiosSerializers(estudios, many=True)
-        lista = {}
-        lista["perfil"] = serializer.data
-        lista["redes"] = serializer_r.data
-        lista["etudios"] = serializer_e.data
-        # perfil = {s}
-        # print serializer_r.data + serializer.data
-        return Response(lista)
+        return Response(serializer.data)
 
 
 @api_view(['GET', 'POST'])
