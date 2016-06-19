@@ -44,3 +44,31 @@ class Redes(models.Model):
 
     def __unicode__(self):
         return self.bitbucket
+
+
+class Skill(models.Model):
+    nombre = models.CharField("Nombre", max_length=120)
+    porcentaje = models.PositiveIntegerField("Porcentaje")
+    icon = models.CharField("Icon", max_length=120)
+
+    class Meta:
+        verbose_name = "Skill"
+        verbose_name_plural = "Skills"
+
+    def __unicode__(self):
+        return self.nombre
+
+
+class Experiencia(models.Model):
+    nombre = models.CharField("Nombre", max_length=120)
+    fecha_inicio = models.DateField("Fecha Inicio")
+    fecha_termino = models.DateField("Fecha Termino")
+    url = models.URLField()
+    descripcion = models.TextField("Descripcion")
+
+    class Meta:
+        verbose_name = "Experiencia"
+        verbose_name_plural = "Experiencias"
+
+    def __unicode__(self):
+        return self.nombre

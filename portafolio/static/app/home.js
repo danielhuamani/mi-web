@@ -3,15 +3,22 @@ var app = app || {};
 (function () {
   "use strict";
 
+  var getUrlMixin = {
+    getInitialState: function () {
+      return { data: [] };
+    },
+    componentDidMount: function () {
+      // this.loadCommentsFromServer();
+      $.get(this.props.url, function (result) {
+        this.setState({ data: result });
+      }.bind(this));
+    }
+  };
   app.PresentacionRedesReact = React.createClass({
 
+    mixins: [getUrlMixin],
     render: function () {
-      var red = this.props.redes;
-      var youtube = red.get("youtube");
-      var bitbucket = red.get("bitbucket");
-      var github = red.get("github");
-      var facebook = red.get("facebook");
-      var linkedin = red.get("linkedin");
+      var red = this.state.data;
 
       return React.createElement(
         "div",
@@ -41,7 +48,7 @@ var app = app || {};
               null,
               React.createElement(
                 "a",
-                { targe: "_blank", href: bitbucket, className: "bitbucket" },
+                { targe: "_blank", href: red.bitbucket, className: "bitbucket" },
                 React.createElement("i", { className: "icon-bitbucket" })
               )
             ),
@@ -50,7 +57,7 @@ var app = app || {};
               null,
               React.createElement(
                 "a",
-                { targe: "_blank", href: facebook, className: "facebook" },
+                { targe: "_blank", href: red.facebook, className: "facebook" },
                 React.createElement("i", { className: "icon-facebook" })
               )
             ),
@@ -59,7 +66,7 @@ var app = app || {};
               null,
               React.createElement(
                 "a",
-                { targe: "_blank", href: github, className: "github" },
+                { targe: "_blank", href: red.github, className: "github" },
                 React.createElement("i", { className: "icon-github" })
               )
             ),
@@ -68,7 +75,7 @@ var app = app || {};
               null,
               React.createElement(
                 "a",
-                { targe: "_blank", href: youtube, className: "youtube" },
+                { targe: "_blank", href: red.youtube, className: "youtube" },
                 React.createElement("i", { className: "icon-youtube" })
               )
             ),
@@ -77,7 +84,7 @@ var app = app || {};
               null,
               React.createElement(
                 "a",
-                { targe: "_blank", href: linkedin, className: "linkedin" },
+                { targe: "_blank", href: red.linkedin, className: "linkedin" },
                 React.createElement("i", { className: "icon-linkedin2" })
               )
             )
@@ -86,23 +93,18 @@ var app = app || {};
       );
     }
   });
+
   app.PresentacionPerfilReact = React.createClass({
+    mixins: [getUrlMixin],
     render: function () {
-      var perfil = this.props.perfil;
-      var descripcion = perfil.get('descripcion');
-      var nombre = perfil.get('nombre');
-      var nacimiento = perfil.get('nacimiento');
-      var celular = perfil.get('celular');
-      var email = perfil.get('email');
-      var cv = perfil.get('cv');
-      console.log(descripcion);
+      var perfil = this.state.data;
       return React.createElement(
         "div",
         null,
         React.createElement(
           "div",
           { className: "descripcion" },
-          React.createElement("div", { dangerouslySetInnerHTML: { __html: descripcion } })
+          React.createElement("div", { dangerouslySetInnerHTML: { __html: perfil.descripcion } })
         ),
         React.createElement(
           "div",
@@ -127,7 +129,7 @@ var app = app || {};
                   "Nombre: "
                 ),
                 " ",
-                nombre
+                perfil.nombre
               ),
               React.createElement(
                 "li",
@@ -138,7 +140,7 @@ var app = app || {};
                   "Fecha Nacimiento: "
                 ),
                 " ",
-                nacimiento
+                perfil.nacimiento
               ),
               React.createElement(
                 "li",
@@ -149,7 +151,7 @@ var app = app || {};
                   "Celular: "
                 ),
                 " ",
-                celular
+                perfil.celular
               ),
               React.createElement(
                 "li",
@@ -160,7 +162,7 @@ var app = app || {};
                   "Email: "
                 ),
                 " ",
-                email
+                perfil.email
               )
             ),
             React.createElement(
@@ -168,7 +170,7 @@ var app = app || {};
               { className: "descargar-cv" },
               React.createElement(
                 "a",
-                { href: cv, target: "_blank", className: "btn btn-primary" },
+                { href: perfil.cv, target: "_blank", className: "btn btn-primary" },
                 "Descargar CV"
               )
             )
@@ -201,21 +203,54 @@ var app = app || {};
       );
     }
   });
-  app.SKillReact = Reach.createClass({
+  app.SkillReact = React.createClass({
+
     render: function () {
+      var percentage = this.props.data.porcentaje + '%';
       return React.createElement(
         "div",
         { className: "skill" },
         React.createElement(
           "div",
-          { className: "title-skill" },
+          { className: "title-skill", style: { width: percentage } },
           React.createElement(
             "span",
             null,
-            React.createElement("i", { "class": "icon-html-five" })
+            React.createElement("i", { className: this.props.data.icon }),
+            this.props.data.nombre,
+            " - ",
+            percentage
           )
         )
       );
     }
   });
+  app.SkillListReact = React.createClass({
+    mixins: [getUrlMixin],
+    render: function () {
+      var skills = this.state.data;
+
+      var skillList = skills.map(function (result) {
+
+        return React.createElement(app.SkillReact, { key: result.id, data: result });
+      });
+      return React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "h2",
+          { className: "title" },
+          "MIS HABLIDADES"
+        ),
+        React.createElement(
+          "div",
+          { className: "cnt-skill" },
+          skillList
+        )
+      );
+    }
+  });
+  ReactDOM.render(React.createElement(app.PresentacionRedesReact, { url: "/api/redes/" }), document.querySelector("#presentacion .cnt-general"));
+  ReactDOM.render(React.createElement(app.PresentacionPerfilReact, { url: "/api/perfil/" }), document.getElementById("perfil-detalle"));
+  ReactDOM.render(React.createElement(app.SkillListReact, { url: "/api/skills/" }), document.getElementById("mis-habilidades"));
 })();

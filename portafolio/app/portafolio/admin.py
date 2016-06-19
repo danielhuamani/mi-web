@@ -1,8 +1,19 @@
 from django.contrib import admin
-from .models import Perfil, Redes, Estudios
-# Register your models here.
+from django_summernote.admin import SummernoteModelAdmin
+from .models import Perfil, Redes, Estudios, Skill, Experiencia
 
-admin.site.register(Perfil)
+
+class PerfilAdmin(SummernoteModelAdmin):
+    model = Perfil
+
+
+class ExperienciaAdmin(SummernoteModelAdmin):
+    model = Experiencia
+
+
+admin.site.register(Perfil, PerfilAdmin)
 admin.site.register(Redes)
 
 admin.site.register(Estudios)
+admin.site.register(Skill)
+admin.site.register(Experiencia, ExperienciaAdmin)

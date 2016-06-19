@@ -32,5 +32,11 @@ var app = app || {};
             console.log("se inciio el modelo perfil");
 
         }
+    });
+    app.SkillModel = Backbone.Model.extend({
+        url: '/api/skills/',
+        initialize: function(atrr){
+            console.log("se inicio el modelo skill");
+        }
     })
 })();

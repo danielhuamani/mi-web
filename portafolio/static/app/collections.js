@@ -22,4 +22,13 @@ var app = app || {};
         }
     })
     app.perfil = new PerfilCollection();
+    var SkillCollection = Backbone.Collection.extend({
+
+        url: "/api/skills/",
+        model: app.SkillModel,
+        initialize: function(){
+            console.log("iniciando la colecion skill");
+        }
+    })
+    app.skill = new SkillCollection();
 })();

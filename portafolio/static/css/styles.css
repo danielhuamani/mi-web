@@ -286,13 +286,13 @@ h2.title {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-#perfil .mis-hablidades .cnt-skill .skil {
+#perfil .mis-hablidades .cnt-skill .skill {
   border-radius: 5px;
   width: 28%;
   margin: 0px 0px 20px 0px;
   background: #1c2833;
 }
-#perfil .mis-hablidades .cnt-skill .skil .title-skill {
+#perfil .mis-hablidades .cnt-skill .skill .title-skill {
   background: #ea5455;
   text-align: left;
   color: #fff;
@@ -300,13 +300,14 @@ h2.title {
   border-radius: 5px;
   padding: 8px 0px 8px 15px;
 }
-#perfil .mis-hablidades .cnt-skill .skil .title-skill span {
+#perfil .mis-hablidades .cnt-skill .skill .title-skill span {
   text-transform: uppercase;
   display: inline-block;
   font-family: 'Lato', sans-serif;
 }
-#perfil .mis-hablidades .cnt-skill .skil .title-skill span i {
+#perfil .mis-hablidades .cnt-skill .skill .title-skill span i {
   font-size: 20px;
+  margin-right: 8px;
 }
 #perfil .cnt-general {
   text-align: center;

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app.portafolio',
     'rest_framework',
+    'django_summernote'
 ]
 
 MIDDLEWARE_CLASSES = [
