@@ -5,7 +5,6 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var plumber = require('gulp-plumber');
 var connect = require('gulp-connect');
-var ts = require('gulp-typescript');
 var babelify = require('babelify');
 var browserify = require('gulp-browserify');
 var historyApiFallback = require('connect-history-api-fallback');
@@ -53,19 +52,11 @@ gulp.task('templates', function() {
 
 
 });
-gulp.task('typescript', function () {
-  return gulp.src('app/static/ts/*.ts')
-    .pipe(ts({
-      noImplicitAny: true,
 
-    }))
-    .pipe(gulp.dest('app/static/js'));
-});
 gulp.task('watch', function() {
 
 	gulp.watch('app/static/stylus/styles.styl', ['stylus']),
 	gulp.watch('app/templates/jade/*.jade', ['templates'])
-  gulp.watch('app/static/ts/*.ts', ['typescript'])
   gulp.watch('portafolio/static/jsx/*.jsx', ['babel'])
 
 
@@ -85,5 +76,5 @@ gulp.task('connect', function() {
     }
   });
 });
-gulp.task('default', ['stylus', 'templates', 'typescript', 'watch', 'connect', 'babel']);
+gulp.task('default', ['stylus', 'templates', 'watch', 'connect', 'babel']);
 //creacioon  del server para el livereload
