@@ -301,6 +301,7 @@ h2.title {
   padding: 8px 0px 8px 15px;
 }
 #perfil .mis-hablidades .cnt-skill .skill .title-skill span {
+  font-size: 16px;
   text-transform: uppercase;
   display: inline-block;
   font-family: 'Lato', sans-serif;
@@ -416,6 +417,10 @@ h2.title {
   bottom: 5px;
   display: flex;
   justify-content: space-between;
+}
+#experiencia .cnt-general .cnt-exp .exp .descripcion .periodo span {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
 }
 #experiencia .cnt-general .cnt-exp .exp .descripcion .periodo .inicio {
   font-family: 'Open Sans', sans-serif;

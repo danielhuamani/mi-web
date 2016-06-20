@@ -101,7 +101,7 @@ var app = app || {};
       );
     }
   });
-   app.SkillReact = React.createClass({
+  app.SkillReact = React.createClass({
 
     render: function(){
       var percentage = this.props.data.porcentaje + '%';
@@ -122,7 +122,7 @@ var app = app || {};
     render: function(){
       var skills = this.state.data;
 
-      var skillList = skills.map(function(result) {
+      var skillList = skills.map(result => {
 
         return (
           <app.SkillReact key={result.id} data={result} />
@@ -140,6 +140,42 @@ var app = app || {};
       )
     }
   });
+  app.ExperienciaReact = React.createClass({
+    render: function(){
+      return(
+        <a href="" className="exp">
+          <div className="descripcion">
+            <div className="titulo-exp">{this.props.data.nombre}</div>
+            <div className="labor"> <div dangerouslySetInnerHTML={{__html: this.props.data.trun_descripcion}} /></div>
+            <div className="periodo"><span className="inicio">{this.props.data.f_inicio}</span><span className="fin">{this.props.data.f_termino}</span></div>
+          </div>
+        </a>
+      )
+    }
+  })
+  app.ExperienciaListReact = React.createClass({
+    mixins: [getUrlMixin],
+    render: function(){
+      var experiencia = this.state.data
+      var experienciaList = experiencia.map(result => {
+        return(
+          <app.ExperienciaReact key={result.id} data={result} />
+        );
+      });
+      return (
+        <div>
+          <div className="cnt-general">
+            <h2 className="title">EXPERIENCIA</h2>
+          </div>
+          <div className="cnt-general">
+            <div className="cnt-exp">
+              {experienciaList}
+            </div>
+          </div>
+        </div>
+      )
+    }
+  })
   ReactDOM.render(
     <app.PresentacionRedesReact url="/api/redes/" />,
     document.querySelector("#presentacion .cnt-general")
@@ -152,6 +188,8 @@ var app = app || {};
     <app.SkillListReact url="/api/skills/" />,
     document.getElementById("mis-habilidades")
   );
+  ReactDOM.render(
+    <app.ExperienciaListReact url="/api/experiencias/" />,
+    document.getElementById("experiencia")
+  );
 })();
-
-

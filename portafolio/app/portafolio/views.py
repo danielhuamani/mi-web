@@ -2,12 +2,14 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .models import Perfil, Redes, Estudios, Skill
+from .models import Perfil, Redes, Estudios, Skill, Experiencia
 
-from .serializers import PerfilSerializer, RedesSerializers, EstudiosSerializers, SkillSerializers
+from .serializers import (PerfilSerializer, RedesSerializers,
+                          EstudiosSerializers, SkillSerializers,
+                          ExperienciaSerializers)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def perfil(request):
     if request.method == "GET":
         perfil_c, create = Perfil.objects.get_or_create(pk=1)
@@ -15,7 +17,7 @@ def perfil(request):
         return Response(serializer.data)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
 def redes(request):
     if request.method == "GET":
         redes_r, create_r = Redes.objects.get_or_create(pk=1)
@@ -29,6 +31,14 @@ def skills(request):
         skills = Skill.objects.all().order_by("porcentaje")
         serializer = SkillSerializers(skills, many=True)
         return Response(serializer.data)
+
+
+@api_view(['GET'])
+def experiencia(request):
+    if request.method == 'GET':
+        experiencias = Experiencia.objects.all().order_by('fecha_inicio')
+        serializers = ExperienciaSerializers(experiencias, many=True)
+        return Response(serializers.data)
 
 
 def home(request):
