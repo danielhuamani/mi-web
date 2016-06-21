@@ -72,3 +72,26 @@ class Experiencia(models.Model):
 
     def __unicode__(self):
         return self.nombre
+
+
+class Categoria(models.Model):
+    nombre = models.CharField("Nombre", max_length=120)
+    class Meta:
+        verbose_name = 'Categoria'
+        verbose_name_plural = 'Categorias'
+
+    def __unicode__(self):
+        return self.nombre
+
+
+class Proyecto(models.Model):
+    categoria = models.ForeignKey(Categoria, related_name="categoria_proyecto")
+    nombre = models.CharField("Nombre", max_length=120)
+    image = models.ImageField("Imagen", upload_to="proyecto")
+
+    class Meta:
+        verbose_name = 'proyectos'
+        verbose_name_plural = 'proyectoss'
+
+    def __unicode__(self):
+        return self.nombre
