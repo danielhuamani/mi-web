@@ -1,0 +1,5 @@
+Django==1.9.6
+django-summernote==0.8.5
+djangorestframework==3.3.3
+pyjade==4.0.0
+six==1.10.0

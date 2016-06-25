@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/danielhuamani/web-principal.git"
+    "url": "https://github.com/danielhuamani/web-dh.git"
   },
   "author": "danielhuamani",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/danielhuamani/web-principal/issues"
+    "url": "https://github.com/danielhuamani/web-dh/issues"
   },
-  "homepage": "https://github.com/danielhuamani/web-principal",
+  "homepage": "https://github.com/danielhuamani/web-dh",
   "devDependencies": {
     "connect-history-api-fallback": "^1.1.0",
     "gulp": "^3.9.0",
@@ -30,10 +30,15 @@
     "st": "^1.1.0"
   },
   "dependencies": {
+    "babel-plugin-transform-react-jsx": "^6.8.0",
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
+<<<<<<< HEAD
     "connect-history-api-fallback": "^1.2.0",
     "gulp-stylus": "^2.4.0",
+=======
+    "gulp-babel": "^6.1.2",
+>>>>>>> badd9ac57c4972ab952bdab400f087b51e125e04
     "gulp-typescript": "^2.13.4",
     "jade": "^1.11.0",
     "plumber": "^0.4.8"

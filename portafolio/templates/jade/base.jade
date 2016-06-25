@@ -4,16 +4,18 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         title Document
-        link(rel="stylesheet", href="../../static/css/styles.css")
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.9/slick.css"/>
+        link(rel="stylesheet", href="{{STATIC_URL}}css/styles.css")
         <link href='https://fonts.googleapis.com/css?family=Open+Sans|Lato' rel='stylesheet' type='text/css'>
-        <script src="{{STATIC_URL}}js/riot.js"></script>
+        <script src="{{STATIC_URL}}js/react.js"></script>
+        <script src="{{STATIC_URL}}js/react-dom.js"></script>
+        <script src="{{STATIC_URL}}js/browser.min.js"></script>
         <script src="{{STATIC_URL}}bower_components/jquery/dist/jquery.js"></script>
-        <script src="{{STATIC_URL}}bower_components/underscore/underscore.js"></script>
-        <script src="{{STATIC_URL}}bower_components/backbone/backbone.js"></script>
+
+
 
         //- script(src="{{STATIC_URL}}app/app.js")
-    body
+    body#app
+
 
         .cnt-wrapper
             header
@@ -25,7 +27,7 @@ html(lang="en")
                         ul
 
                             li
-                                a(href="") Perfil
+                                a(href="") Home
                             li
                                 a(href="") Experiencia
                             li
@@ -36,6 +38,9 @@ html(lang="en")
                                 a(href="") Certificados
                             li
                                 a(href="") Blog
+            section#presentacion
+                .cnt-general
+
             block content
             footer
                 .cnt-general
@@ -43,6 +48,4 @@ html(lang="en")
                         Daniel Huamani
 
 
-
-        <script src="{{STATIC_URL}}app/models.js"></script>
-        <script src="{{STATIC_URL}}app/vistas.js"></script>
+        <script src="{{STATIC_URL}}jsx/home.jsx" type="text/babel"></script>
