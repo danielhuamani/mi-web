@@ -32,6 +32,8 @@
   "dependencies": {
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
+    "connect-history-api-fallback": "^1.2.0",
+    "gulp-stylus": "^2.4.0",
     "gulp-typescript": "^2.13.4",
     "jade": "^1.11.0",
     "plumber": "^0.4.8"
