@@ -116,7 +116,7 @@
       )
     }
   });
-   app.SkillListReact = React.createClass({displayName: "SkillListReact",
+  app.SkillListReact = React.createClass({displayName: "SkillListReact",
     mixins: [getUrlMixin],
     render: function(){
       var skills = this.state.data;
@@ -175,6 +175,61 @@
       )
     }
   })
+  app.ProyectoReact = React.createClass({displayName: "ProyectoReact",
+    render: function(){
+      return(
+        React.createElement("div", {classNanme: "proyectos"}, 
+          React.createElement("div", {className: "proyecto"}, 
+            React.createElement("figure", null, 
+              React.createElement("img", {src: "../../static/img/proyect.jpg", width: "300"}), 
+              React.createElement("h3", {className: "titulo-proyecto"}, "Carroreceruas agn"), 
+              React.createElement("div", {className: "capa"})
+            )
+          )
+        )
+      )
+    }
+  })
+  app.CategoriaReact = React.createClass({displayName: "CategoriaReact",
+    render: function(){
+      return(
+        React.createElement("li", null, 
+          React.createElement("a", {href: "", className: this.props.active}, 
+            this.props.data.nombre
+          )
+        )
+      )
+    }
+  })
+  app.PortafolioReactReact = React.createClass({displayName: "PortafolioReactReact",
+    mixins: [getUrlMixin],
+
+    render: function(){
+      var categorias = this.state.data
+      var active = ""
+      var categoriaList = categorias.map((result, index) => {
+        if (index==0) {
+          var active = "active"
+        }
+        return(
+            React.createElement(app.CategoriaReact, {key: result.id, data: result, active: active})
+        );
+      })
+      return(
+        React.createElement("div", {className: "cnt-general"}, 
+            React.createElement("h2", {className: "title"}, "Portafolio"), 
+            React.createElement("div", {className: "categorias"}, 
+              React.createElement("ul", null, 
+                categoriaList
+              )
+            )
+
+        )
+
+        )
+      }
+
+    })
   ReactDOM.render(
     React.createElement(app.PresentacionRedesReact, {url: "/api/redes/"}),
     document.querySelector("#presentacion .cnt-general")
@@ -191,4 +246,8 @@
     React.createElement(app.ExperienciaListReact, {url: "/api/experiencias/"}),
     document.getElementById("experiencia")
   );
+  ReactDOM.render(
+    React.createElement(app.PortafolioReactReact, {url: "/api/categorias/"}),
+    document.getElementById("portafolio")
+  )
 })();

@@ -9,7 +9,7 @@ class Perfil(models.Model):
     celular = models.CharField("celular", max_length=120)
     email = models.EmailField("Email")
     descripcion = models.TextField()
-    cv = models.FileField("PDF")
+    cv = models.FileField("PDF", upload_to="cv")
 
     class Meta:
         verbose_name = "Perfil"
@@ -76,6 +76,7 @@ class Experiencia(models.Model):
 
 class Categoria(models.Model):
     nombre = models.CharField("Nombre", max_length=120)
+    posicion = models.PositiveIntegerField(default=0)
     class Meta:
         verbose_name = 'Categoria'
         verbose_name_plural = 'Categorias'
