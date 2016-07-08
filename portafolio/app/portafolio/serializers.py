@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Perfil, Redes, Estudios, Skill, Experiencia
+from .models import Perfil, Redes, Estudios, Skill, Experiencia, Categoria, Proyecto
 
 
 class PerfilSerializer(serializers.ModelSerializer):
@@ -50,3 +50,18 @@ class ExperienciaSerializers(serializers.ModelSerializer):
     class Meta:
         model = Experiencia
         fields = ['nombre', 'f_inicio', 'f_termino', 'url', 'descripcion', 'trun_descripcion', 'id']
+
+
+class ProyectoSerializers(serializers.ModelSerializer):
+
+    class Meta:
+        model = Proyecto
+        fields = ['nombre', 'image']
+
+
+class CategoriaSerializers(serializers.ModelSerializer):
+    categoria_proyecto = ProyectoSerializers(many=True)
+
+    class Meta:
+        model = Categoria
+        fields = ['id', 'posicion', 'nombre', 'categoria_proyecto']

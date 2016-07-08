@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
 from rest_framework import routers
-from .views import perfil, home, redes, skills, experiencia
+from .views import perfil, home, redes, skills, experiencia, categorias
 
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -14,5 +14,6 @@ urlpatterns = [
     url(r'^api/redes/$', redes, name="redes"),
     url(r'^api/skills/$', skills, name="skills"),
     url(r'^api/experiencias/$', experiencia, name="experiencia"),
+    url(r'^api/categorias/$', categorias, name="categorias"),
     url(r'^$', home, name="home"),
 ]

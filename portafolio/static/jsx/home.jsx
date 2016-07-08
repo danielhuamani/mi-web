@@ -117,7 +117,7 @@ var app = app || {};
       )
     }
   });
-   app.SkillListReact = React.createClass({
+  app.SkillListReact = React.createClass({
     mixins: [getUrlMixin],
     render: function(){
       var skills = this.state.data;
@@ -176,6 +176,61 @@ var app = app || {};
       )
     }
   })
+  app.ProyectoReact = React.createClass({
+    render: function(){
+      return(
+        <div classNanme='proyectos'>
+          <div className="proyecto">
+            <figure>
+              <img src="../../static/img/proyect.jpg" width="300"/>
+              <h3 className="titulo-proyecto">Carroreceruas agn</h3>
+              <div className="capa"></div>
+            </figure>
+          </div>
+        </div>
+      )
+    }
+  })
+  app.CategoriaReact = React.createClass({
+    render: function(){
+      return(
+        <li>
+          <a href="" className={this.props.active}>
+            {this.props.data.nombre}
+          </a>
+        </li>
+      )
+    }
+  })
+  app.PortafolioReactReact = React.createClass({
+    mixins: [getUrlMixin],
+
+    render: function(){
+      var categorias = this.state.data
+      var active = ""
+      var categoriaList = categorias.map((result, index) => {
+        if (index==0) {
+          var active = "active"
+        }
+        return(
+            <app.CategoriaReact key={result.id} data={result} active={active} />
+        );
+      })
+      return(
+        <div className="cnt-general">
+            <h2 className="title">Portafolio</h2>
+            <div className="categorias">
+              <ul>
+                {categoriaList}
+              </ul>
+            </div>
+
+        </div>
+
+        )
+      }
+
+    })
   ReactDOM.render(
     <app.PresentacionRedesReact url="/api/redes/" />,
     document.querySelector("#presentacion .cnt-general")
@@ -192,4 +247,8 @@ var app = app || {};
     <app.ExperienciaListReact url="/api/experiencias/" />,
     document.getElementById("experiencia")
   );
+  ReactDOM.render(
+    <app.PortafolioReactReact url="/api/categorias/" />,
+    document.getElementById("portafolio")
+  )
 })();
