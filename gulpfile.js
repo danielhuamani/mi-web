@@ -12,7 +12,7 @@ var babel = require('gulp-babel');
 var directorio = {
 
   jade: ['app/templates/jade/*.jade'],
-  stylus: ['app/static/stylus/styles.styl']
+  stylus: ['portafolio/static/stylus/styles.styl']
 
 };
 
@@ -34,7 +34,7 @@ gulp.task('stylus', function () {
     .pipe(stylus({
       compress: true
       }))
-    .pipe(gulp.dest('app/static/css/'))
+    .pipe(gulp.dest('portafolio/static/css/'))
     .pipe(connect.reload());
 
 });
@@ -55,7 +55,7 @@ gulp.task('templates', function() {
 
 gulp.task('watch', function() {
 
-	gulp.watch('app/static/stylus/styles.styl', ['stylus']),
+	gulp.watch('portafolio/static/stylus/styles.styl', ['stylus']),
 	gulp.watch('app/templates/jade/*.jade', ['templates'])
   gulp.watch('portafolio/static/jsx/*.jsx', ['babel'])
 
