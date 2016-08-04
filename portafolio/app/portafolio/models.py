@@ -15,7 +15,7 @@ class Perfil(models.Model):
         verbose_name = "Perfil"
         verbose_name_plural = "Perfils"
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nombre
 
 
@@ -27,7 +27,7 @@ class Estudios(models.Model):
         verbose_name = "Estudios"
         verbose_name_plural = "Estudioss"
 
-    def __unicode__(self):
+    def __str__(self):
         return self.titulo
 
 
@@ -42,7 +42,7 @@ class Redes(models.Model):
         verbose_name = "Redes"
         verbose_name_plural = "Redess"
 
-    def __unicode__(self):
+    def __str__(self):
         return self.bitbucket
 
 
@@ -55,7 +55,7 @@ class Skill(models.Model):
         verbose_name = "Skill"
         verbose_name_plural = "Skills"
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nombre
 
 
@@ -70,7 +70,7 @@ class Experiencia(models.Model):
         verbose_name = "Experiencia"
         verbose_name_plural = "Experiencias"
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nombre
 
 
@@ -82,7 +82,7 @@ class Categoria(models.Model):
         verbose_name = 'Categoria'
         verbose_name_plural = 'Categorias'
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nombre
 
 
@@ -97,5 +97,5 @@ class Proyecto(models.Model):
         verbose_name = 'proyectos'
         verbose_name_plural = 'proyectoss'
 
-    def __unicode__(self):
+    def __str__(self):
         return self.nombre
