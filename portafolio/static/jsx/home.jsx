@@ -34,27 +34,27 @@ var app = app || {};
           <div className="links">
             <ul>
               <li>
-                <a target="_blank" href={red.bitbucket} className="bitbucket">
+                <a href={red.bitbucket} className="bitbucket" target="_blank">
                   <i className="icon-bitbucket"></i>
                 </a>
               </li>
               <li>
-                <a target="_blank" href={red.facebook} className="facebook">
+                <a href={red.facebook} className="facebook" target="_blank">
                   <i className="icon-facebook"></i>
                 </a>
               </li>
               <li>
-                <a target="_blank" href={red.github} className="github">
+                <a href={red.github} className="github" target="_blank">
                   <i className="icon-github"></i>
                 </a>
               </li>
               <li>
-                <a target="_blank" href={red.youtube} className="youtube">
+                <a href={red.youtube} className="youtube" target="_blank">
                   <i className="icon-youtube"></i>
                 </a>
               </li>
               <li>
-                <a target="_blank" href={red.linkedin} className="linkedin">
+                <a href={red.linkedin} className="linkedin" target="_blank">
                   <i className="icon-linkedin2"></i>
                 </a>
               </li>
