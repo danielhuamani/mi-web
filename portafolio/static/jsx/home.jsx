@@ -176,21 +176,7 @@ var app = app || {};
       )
     }
   })
-  app.ProyectoReact = React.createClass({
-    render: function(){
-      return(
-        <div classNanme='proyectos'>
-          <div className="proyecto">
-            <figure>
-              <img src="../../static/img/proyect.jpg" width="300"/>
-              <h3 className="titulo-proyecto">Carroreceruas agn</h3>
-              <div className="capa"></div>
-            </figure>
-          </div>
-        </div>
-      )
-    }
-  })
+
   app.CategoriaReact = React.createClass({
     render: function(){
       return(
@@ -202,35 +188,45 @@ var app = app || {};
       )
     }
   })
-  app.PortafolioReactReact = React.createClass({
+  app.ProyectoReact = React.createClass({
+    render: function(){
+      console.log(this.props.data.imagen);
+      return(
+        <a className="proyecto" href={this.props.data.url}>
+          <figure><img src={this.props.data.image} width="300" /></figure>
+          <h3 className="titulo-proyecto">{this.props.data.nombre}</h3>
+          <div className="capa"></div>
+        </a>
+      )
+    }
+
+  })
+  app.PortafolioReact = React.createClass({
     mixins: [getUrlMixin],
 
     render: function(){
-      var categorias = this.state.data
-      var active = ""
-      var categoriaList = categorias.map((result, index) => {
-        if (index==0) {
-          var active = "active"
-        }
+
+      var proyectos = this.state.data;
+
+      var proyectosList = proyectos.map(result => {
         return(
-            <app.CategoriaReact key={result.id} data={result} active={active} />
+            <app.ProyectoReact key={result.id} data={result} />
         );
-      })
+
+      });
+
       return(
         <div className="cnt-general">
             <h2 className="title">Portafolio</h2>
-            <div className="categorias">
-              <ul>
-                {categoriaList}
-              </ul>
-            </div>
-
+          <div className="proyectos">
+            {proyectosList}
+          </div>
         </div>
 
         )
-      }
+    }
 
-    })
+  })
   ReactDOM.render(
     <app.PresentacionRedesReact url="/api/redes/" />,
     document.querySelector("#presentacion .cnt-general")
@@ -248,7 +244,7 @@ var app = app || {};
     document.getElementById("experiencia")
   );
   ReactDOM.render(
-    <app.PortafolioReactReact url="/api/categorias/" />,
+    <app.PortafolioReact url="/api/proyectos/" />,
     document.getElementById("portafolio")
   )
 })();

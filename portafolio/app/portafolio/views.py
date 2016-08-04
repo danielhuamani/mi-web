@@ -2,11 +2,11 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .models import Perfil, Redes, Estudios, Skill, Experiencia, Categoria
+from .models import Perfil, Redes, Estudios, Skill, Experiencia, Categoria, Proyecto
 
 from .serializers import (PerfilSerializer, RedesSerializers,
                           EstudiosSerializers, SkillSerializers,
-                          ExperienciaSerializers, CategoriaSerializers)
+                          ExperienciaSerializers, CategoriaSerializers, ProyectoSerializers)
 
 
 @api_view(['GET'])
@@ -40,12 +40,22 @@ def experiencia(request):
         serializers = ExperienciaSerializers(experiencias, many=True)
         return Response(serializers.data)
 
+
+@api_view(['GET'])
+def proyectos(request):
+    if request.method == 'GET':
+        proyectos = Proyecto.objects.all().order_by('posicion')
+        serializers = ProyectoSerializers(proyectos, many=True)
+        return Response(serializers.data)
+
+
 @api_view(['GET'])
 def categorias(request):
     if request.method == 'GET':
         categorias = Categoria.objects.all().order_by('posicion')
         serializers = CategoriaSerializers(categorias, many=True)
         return Response(serializers.data)
+
 
 def home(request):
     return render(request, "jade/perfil.jade", locals())

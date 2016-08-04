@@ -77,6 +77,7 @@ class Experiencia(models.Model):
 class Categoria(models.Model):
     nombre = models.CharField("Nombre", max_length=120)
     posicion = models.PositiveIntegerField(default=0)
+
     class Meta:
         verbose_name = 'Categoria'
         verbose_name_plural = 'Categorias'
@@ -89,6 +90,8 @@ class Proyecto(models.Model):
     categoria = models.ForeignKey(Categoria, related_name="categoria_proyecto")
     nombre = models.CharField("Nombre", max_length=120)
     image = models.ImageField("Imagen", upload_to="proyecto")
+    posicion = models.PositiveIntegerField(default=0)
+    url = models.URLField("Url", blank=True)
 
     class Meta:
         verbose_name = 'proyectos'

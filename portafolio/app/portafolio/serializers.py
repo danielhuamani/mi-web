@@ -32,6 +32,7 @@ class SkillSerializers(serializers.ModelSerializer):
         model = Skill
         fiels = ['nombre', 'porcentaje', 'icon']
 
+
 class ExperienciaSerializers(serializers.ModelSerializer):
     f_inicio = serializers.SerializerMethodField("fe_inicio")
     f_termino = serializers.SerializerMethodField("fe_termino")
@@ -56,7 +57,7 @@ class ProyectoSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Proyecto
-        fields = ['nombre', 'image']
+        fields = ['nombre', 'image', 'id', 'url']
 
 
 class CategoriaSerializers(serializers.ModelSerializer):
