@@ -259,6 +259,47 @@ h2.title
     padding-top 50px
     .cnt-general
         text-align center
+        .cnt-modal
+            .close
+                display none
+            .open
+                display flex !important
+                width 60%
+                height 100%
+                position fixed
+                left 0px
+                right 0px
+                align-items center
+                z-index 20
+                top 0
+                margin auto
+                justify-content center
+            .modal
+                .overlay
+                    width 100%
+                    height 100%
+                    background rgba(0,0,0,0.4)
+                    position fixed
+                    top 0
+                    right 0px
+                    z-index 10
+                .content
+                    padding 20px
+                    border-radius 5px
+                    background c-blanco
+                    position relative
+                    z-index 30
+                .title-modal
+                    font-family lato
+                    margin-bottom 5px
+                    font-size 24px
+                    color c-plomo
+                    transition 0.3s eaes all
+                    font-weight bold
+                .descripcion
+                    font-family open
+                    font-size 16px
+                    margin-top 10px
         .cnt-exp
             display flex
             flex-wrap wrap

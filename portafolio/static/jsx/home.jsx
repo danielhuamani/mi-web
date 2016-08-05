@@ -141,25 +141,68 @@ var app = app || {};
     }
   });
   app.ExperienciaReact = React.createClass({
+    handleClick: function(id){
+        this.props.changeModal(id);
+    },
     render: function(){
       return(
-        <a href="" className="exp">
+        <div  className="exp" onClick={() => this.handleClick(this.props.data.id)}>
           <div className="descripcion">
             <div className="titulo-exp">{this.props.data.nombre}</div>
             <div className="labor"> <div dangerouslySetInnerHTML={{__html: this.props.data.trun_descripcion}} /></div>
             <div className="periodo"><span className="inicio">{this.props.data.f_inicio}</span><span className="fin">{this.props.data.f_termino}</span></div>
           </div>
-        </a>
+        </div>
+      )
+    }
+  })
+  app.ModalReact = React.createClass({
+    handleClick: function(id){
+        this.props.changeModal(id);
+    },
+    render: function(){
+      var tag = "modal close";
+      if (this.props.data.id == this.props.currentModal) {
+        tag = tag + " open"
+      }
+      return(
+        <div className={tag}>
+          <div className="overlay">
+
+          </div>
+          <div className="content">
+            <div className="close-modal" onClick={() => this.handleClick(0)}>
+              X
+            </div>
+            <h2 className="title-modal">{this.props.data.nombre}</h2>
+            <div className="descripcion"> <div dangerouslySetInnerHTML={{__html: this.props.data.descripcion}} /></div>
+          </div>
+        </div>
       )
     }
   })
   app.ExperienciaListReact = React.createClass({
     mixins: [getUrlMixin],
+    getInitialState: function () {
+        return {
+            currentModal: 0
+        };
+    },
+    changeModal: function(id) {
+        console.log(id);
+        this.setState({ currentModal: id });
+    },
+
     render: function(){
       var experiencia = this.state.data
       var experienciaList = experiencia.map(result => {
         return(
-          <app.ExperienciaReact key={result.id} data={result} />
+          <app.ExperienciaReact key={result.id} data={result} currentModal={this.state.currentModal}  changeModal={this.changeModal} />
+        );
+      });
+      var modalList = experiencia.map(modals => {
+        return(
+          <app.ModalReact key={modals.id} data={modals} currentModal={this.state.currentModal} changeModal={this.changeModal} />
         );
       });
       return (
@@ -171,11 +214,17 @@ var app = app || {};
             <div className="cnt-exp">
               {experienciaList}
             </div>
+            <div className="cnt-modal">
+              {modalList}
+            </div>
           </div>
         </div>
       )
     }
   })
+
+
+
 
   app.CategoriaReact = React.createClass({
     render: function(){

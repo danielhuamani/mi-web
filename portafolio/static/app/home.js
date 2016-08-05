@@ -48,7 +48,7 @@ var app = app || {};
               null,
               React.createElement(
                 "a",
-                { targe: "_blank", href: red.bitbucket, className: "bitbucket" },
+                { href: red.bitbucket, className: "bitbucket", target: "_blank" },
                 React.createElement("i", { className: "icon-bitbucket" })
               )
             ),
@@ -57,7 +57,7 @@ var app = app || {};
               null,
               React.createElement(
                 "a",
-                { targe: "_blank", href: red.facebook, className: "facebook" },
+                { href: red.facebook, className: "facebook", target: "_blank" },
                 React.createElement("i", { className: "icon-facebook" })
               )
             ),
@@ -66,7 +66,7 @@ var app = app || {};
               null,
               React.createElement(
                 "a",
-                { targe: "_blank", href: red.github, className: "github" },
+                { href: red.github, className: "github", target: "_blank" },
                 React.createElement("i", { className: "icon-github" })
               )
             ),
@@ -75,7 +75,7 @@ var app = app || {};
               null,
               React.createElement(
                 "a",
-                { targe: "_blank", href: red.youtube, className: "youtube" },
+                { href: red.youtube, className: "youtube", target: "_blank" },
                 React.createElement("i", { className: "icon-youtube" })
               )
             ),
@@ -84,7 +84,7 @@ var app = app || {};
               null,
               React.createElement(
                 "a",
-                { targe: "_blank", href: red.linkedin, className: "linkedin" },
+                { href: red.linkedin, className: "linkedin", target: "_blank" },
                 React.createElement("i", { className: "icon-linkedin2" })
               )
             )
@@ -251,10 +251,13 @@ var app = app || {};
     }
   });
   app.ExperienciaReact = React.createClass({
+    handleClick: function (id) {
+      this.props.changeModal(id);
+    },
     render: function () {
       return React.createElement(
-        "a",
-        { href: "", className: "exp" },
+        "div",
+        { className: "exp", onClick: () => this.handleClick(this.props.data.id) },
         React.createElement(
           "div",
           { className: "descripcion" },
@@ -287,12 +290,61 @@ var app = app || {};
       );
     }
   });
+  app.ModalReact = React.createClass({
+    handleClick: function (id) {
+      this.props.changeModal(id);
+    },
+    render: function () {
+      var tag = "modal close";
+      if (this.props.data.id == this.props.currentModal) {
+        tag = tag + " open";
+      }
+      return React.createElement(
+        "div",
+        { className: tag },
+        React.createElement("div", { className: "overlay" }),
+        React.createElement(
+          "div",
+          { className: "content" },
+          React.createElement(
+            "div",
+            { className: "close-modal", onClick: () => this.handleClick(0) },
+            "X"
+          ),
+          React.createElement(
+            "h2",
+            { className: "title-modal" },
+            this.props.data.nombre
+          ),
+          React.createElement(
+            "div",
+            { className: "descripcion" },
+            " ",
+            React.createElement("div", { dangerouslySetInnerHTML: { __html: this.props.data.descripcion } })
+          )
+        )
+      );
+    }
+  });
   app.ExperienciaListReact = React.createClass({
     mixins: [getUrlMixin],
+    getInitialState: function () {
+      return {
+        currentModal: 0
+      };
+    },
+    changeModal: function (id) {
+      console.log(id);
+      this.setState({ currentModal: id });
+    },
+
     render: function () {
       var experiencia = this.state.data;
       var experienciaList = experiencia.map(result => {
-        return React.createElement(app.ExperienciaReact, { key: result.id, data: result });
+        return React.createElement(app.ExperienciaReact, { key: result.id, data: result, currentModal: this.state.currentModal, changeModal: this.changeModal });
+      });
+      var modalList = experiencia.map(modals => {
+        return React.createElement(app.ModalReact, { key: modals.id, data: modals, currentModal: this.state.currentModal, changeModal: this.changeModal });
       });
       return React.createElement(
         "div",
@@ -313,6 +365,11 @@ var app = app || {};
             "div",
             { className: "cnt-exp" },
             experienciaList
+          ),
+          React.createElement(
+            "div",
+            { className: "cnt-modal" },
+            modalList
           )
         )
       );
