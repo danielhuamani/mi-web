@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
-
 from django.db import models
+from sorl.thumbnail import ImageField
 
 
 class Perfil(models.Model):
@@ -22,6 +22,7 @@ class Perfil(models.Model):
 class Estudios(models.Model):
     titulo = models.CharField("titulo", max_length=120)
     tiempo = models.CharField("tiempo", max_length=120)
+    carrera = models.CharField("carrera", max_length=120)
 
     class Meta:
         verbose_name = "Estudios"
@@ -65,6 +66,7 @@ class Experiencia(models.Model):
     fecha_termino = models.DateField("Fecha Termino")
     url = models.URLField()
     descripcion = models.TextField("Descripcion")
+    logo = ImageField(upload_to='logo', null=True, blank=True)
 
     class Meta:
         verbose_name = "Experiencia"

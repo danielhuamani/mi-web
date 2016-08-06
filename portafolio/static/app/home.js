@@ -302,20 +302,16 @@ var app = app || {};
       return React.createElement(
         "div",
         { className: tag },
-        React.createElement("div", { className: "overlay" }),
+        React.createElement("div", { className: "overlay", onClick: () => this.handleClick(0) }),
         React.createElement(
           "div",
           { className: "content" },
           React.createElement(
-            "div",
-            { className: "close-modal", onClick: () => this.handleClick(0) },
-            "X"
+            "a",
+            { href: this.props.data.url, target: "_blank" },
+            React.createElement("img", { src: this.props.data.logo, height: "100" })
           ),
-          React.createElement(
-            "h2",
-            { className: "title-modal" },
-            this.props.data.nombre
-          ),
+          React.createElement("span", { className: "close-modal icon-close", onClick: () => this.handleClick(0) }),
           React.createElement(
             "div",
             { className: "descripcion" },

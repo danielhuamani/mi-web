@@ -43,7 +43,7 @@ a
 header
     position fixed
     top 0px
-    z-index 1100
+    z-index 40
     border-bottom 1px solid c-rojo
     background #1c2833
     width 100%
@@ -270,7 +270,7 @@ h2.title
                 left 0px
                 right 0px
                 align-items center
-                z-index 20
+                z-index 60
                 top 0
                 margin auto
                 justify-content center
@@ -282,24 +282,49 @@ h2.title
                     position fixed
                     top 0
                     right 0px
-                    z-index 10
+                    z-index 50
                 .content
                     padding 20px
                     border-radius 5px
                     background c-blanco
                     position relative
-                    z-index 30
-                .title-modal
-                    font-family lato
-                    margin-bottom 5px
-                    font-size 24px
-                    color c-plomo
-                    transition 0.3s eaes all
-                    font-weight bold
-                .descripcion
-                    font-family open
-                    font-size 16px
-                    margin-top 10px
+                    z-index 60
+                    a
+                        display block
+                        background c-plomo
+                        padding 10px 0px
+                        img
+                            display block
+                            margin auto
+                    .icon-close
+                        color c-blanco
+                        cursor pointer
+                        border-bottom-left-radius 5px
+                        border-top-right-radius 5px
+                        background c-rojo
+                        font-size 32px
+                        position absolute
+                        top 0
+                        right 0px
+                    .title-modal
+                        font-family lato
+                        margin-bottom 5px
+                        font-size 24px
+                        color c-plomo
+                        transition 0.3s eaes all
+                        font-weight bold
+                    .descripcion
+                        border 1px solid c-plomo
+                        font-family open
+                        font-size 16px
+                        padding 10px 10px
+                        text-align justify
+                        p
+                            margin-bottom 10px
+                        ul
+                            padding-left 40px
+                            li
+                                list-style-type disc
         .cnt-exp
             display flex
             flex-wrap wrap

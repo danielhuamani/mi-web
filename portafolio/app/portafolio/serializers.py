@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from sorl.thumbnail import get_thumbnail
 from .models import Perfil, Redes, Estudios, Skill, Experiencia, Categoria, Proyecto
 
 
@@ -37,6 +38,7 @@ class ExperienciaSerializers(serializers.ModelSerializer):
     f_inicio = serializers.SerializerMethodField("fe_inicio")
     f_termino = serializers.SerializerMethodField("fe_termino")
     trun_descripcion = serializers.SerializerMethodField("truncate_descripcion")
+    logo_t = serializers.SerializerMethodField("logo_thumbnail")
 
     def fe_inicio(self, experiencia):
         return experiencia.fecha_inicio.strftime("%m/%d/%Y")
@@ -48,9 +50,17 @@ class ExperienciaSerializers(serializers.ModelSerializer):
         truncate = experiencia.descripcion[:90] + "..."
         return truncate
 
+    def logo_thumbnail(self, experiencia):
+        logo_thum = ''
+        print (experiencia.logo)
+        if experiencia.logo:
+            logo_thum = get_thumbnail(experiencia.logo, '284x101', crop='center', quality=100)
+            logo_thum = logo_thum.url
+        return str(logo_thum)
+
     class Meta:
         model = Experiencia
-        fields = ['nombre', 'f_inicio', 'f_termino', 'url', 'descripcion', 'trun_descripcion', 'id']
+        fields = ['nombre', 'f_inicio', 'f_termino', 'url', 'descripcion', 'trun_descripcion', 'id', 'logo', 'logo_t']
 
 
 class ProyectoSerializers(serializers.ModelSerializer):

@@ -167,14 +167,17 @@ var app = app || {};
       }
       return(
         <div className={tag}>
-          <div className="overlay">
+          <div className="overlay" onClick={() => this.handleClick(0)}>
 
           </div>
           <div className="content">
-            <div className="close-modal" onClick={() => this.handleClick(0)}>
-              X
-            </div>
-            <h2 className="title-modal">{this.props.data.nombre}</h2>
+            <a href={this.props.data.url} target="_blank">
+              <img src={this.props.data.logo}  height="100" />
+            </a>
+            <span className="close-modal icon-close" onClick={() => this.handleClick(0)}>
+
+            </span>
+
             <div className="descripcion"> <div dangerouslySetInnerHTML={{__html: this.props.data.descripcion}} /></div>
           </div>
         </div>
