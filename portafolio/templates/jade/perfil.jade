@@ -15,12 +15,12 @@ block content
 
     section#experiencia
 
-  
+
 
     section#portafolio
-      
 
-                
+
+
 
         //- .proyectos
         //-     .proyecto
@@ -59,3 +59,102 @@ block content
                 .cnt-button
                     button.
                         Enviar
+block js
+    script(type="text/javascript").
+        $(document).ready(function(){
+
+            /**
+             * This part does the "fixed navigation after scroll" functionality
+             * We use the jQuery function scroll() to recalculate our variables as the
+             * page is scrolled/
+             */
+            $(window).scroll(function(){
+                var window_top = $(window).scrollTop() + 12; // the "12" should equal the margin-top value for nav.stick
+                // var div_top = $('#nav-anchor').offset().top;
+                //     if (window_top > div_top) {
+                //         $('nav').addClass('stick');
+                //     } else {
+                //         $('nav').removeClass('stick');
+                //     }
+            });
+
+            /**
+             * This part causes smooth scrolling using scrollto.js
+             * We target all a tags inside the nav, and apply the scrollto.js to it.
+             */
+            $("nav a").click(function(evn){
+                evn.preventDefault();
+                console.log("-------------");
+                console.log(this.hash);
+                $('html,body').scrollTo(this.hash, this.hash);
+            });
+
+            /**
+             * This part handles the highlighting functionality.
+             * We use the scroll functionality again, some array creation and
+             * manipulation, class adding and class removing, and conditional testing
+             */
+            var aChildren = $("nav li").children(); // find the a children of the list items
+            var aArray = []; // create the empty aArray
+            for (var i=0; i < aChildren.length; i++) {
+                var aChild = aChildren[i];
+                var ahref = $(aChild).attr('href');
+                aArray.push(ahref);
+            } // this for loop fills the aArray with attribute href values
+            console.log(aArray);
+
+            $(window).scroll(function(){
+                var windowPos = $(window).scrollTop(); // get the offset of the window from the top of page
+                var windowHeight = $(window).height(); // get the height of the window
+                var docHeight = $(document).height();
+
+                for (var i=0; i < aArray.length; i++) {
+                    var theID = aArray[i];
+                    if (theID) {
+
+                        var divPos = $(theID).offset().top - 70; // get the offset of the div from the top of page
+                        var divHeight = $(theID).height();
+
+                        if (windowPos >= divPos && windowPos < (divPos + divHeight)) {
+                            $("a[href='" + theID + "']").parent().addClass("active");
+                        } else {
+                            $("a[href='" + theID + "']").parent().removeClass("active");
+                        }
+                    }
+                }
+
+                if(windowPos + windowHeight == docHeight) {
+                    if (!$("nav li:last-child a").parent().hasClass("active")) {
+                        var navActiveCurrent = $(".active").find('a').attr("href");
+                        $("a[href='" + navActiveCurrent + "']").parent().removeClass("active");
+                        // $("nav li:last-child a").parent().addClass("active");
+                    }
+                }
+            });
+        });
+        $.scrollTo = $.fn.scrollTo = function(x, y, options){
+            if (!(this instanceof $)) return $.fn.scrollTo.apply($('html, body'), arguments);
+            console.log(x);
+            console.log(y);
+            options = $.extend({}, {
+                gap: {
+                    x: 0,
+                    y: 0
+                },
+                animation: {
+                    easing: 'swing',
+                    duration: 400,
+                    complete: $.noop,
+                    step: $.noop
+                }
+            }, options);
+
+            return this.each(function(){
+                var elem = $(this);
+                elem.stop().animate({
+                    scrollLeft: !isNaN(Number(x)) ? x : $(y).offset().left + options.gap.x,
+                    scrollTop: !isNaN(Number(y)) ? y : $(y).offset().top - 67 + options.gap.y
+                }, options.animation);
+            });
+        };
+

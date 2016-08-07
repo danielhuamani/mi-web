@@ -66,6 +66,10 @@ header
 
                 align-items center
                 justify-content space-around
+                li.active
+                    a
+                        background c-rojo
+
                 li
 
                     a
@@ -317,7 +321,7 @@ h2.title
                         border 1px solid c-plomo
                         font-family open
                         font-size 16px
-                        padding 10px 10px
+                        padding 20px 10px
                         text-align justify
                         p
                             margin-bottom 10px
@@ -332,7 +336,7 @@ h2.title
             .exp
                 max-width 300px
                 display flex
-                height 120px
+                height 170px
                 margin 0px 10px 20px 10px
                 background c-crema
                 border 1px solid c-plomo
@@ -356,7 +360,7 @@ h2.title
                         font-family lato
                         display block
                         margin-bottom 5px
-                        font-size 16px
+                        font-size 18px
                         color c-plomo
                         transition 0.3s eaes all
                         font-weight bold
@@ -388,7 +392,7 @@ h2.title
                             font-size 14px
 #portafolio
     text-align center
-    margin-top 20px
+    padding-top 20px
     .categorias
         margin-bottom 50px
         ul
@@ -471,12 +475,12 @@ h2.title
 section#contacto
     text-align center
     background-image url("../img/img-contacto.jpg")
-    padding-top 30px
+    padding-top 40px
     padding-bottom 30px
     margin-top 40px
     background-size cover
     position relative
-    height 400px
+    // height 400px
     &:after
         content ""
         width 100%
@@ -503,21 +507,25 @@ section#contacto
             display flex
             justify-content space-between
             flex-wrap wrap
+            flex-direction column
             .cnt-input
-                margin-right 20px
-                width 55%
+
+                width 80%
+                margin auto
                 input
                     padding-left 5px
                     font-family lato
                     margin-bottom 10px
                     border none
-                    height 30px
+                    height 36px
                     border-radius 4px
                     width 100%
                     color c-plomo
                     font-size 16px
+                    box-sizing border-box
             .cnt-area
-                width 40%
+                width 80%
+                margin auto
                 textarea
                     padding-left 5px
                     padding-top 4px
@@ -527,14 +535,16 @@ section#contacto
                     height 105px
                     color c-plomo
                     font-size 16px
+                    box-sizing border-box
 
             .cnt-button
+                margin-top 20px
                 button
                     font-family lato
                     border none
-                    padding 5px 15px
+                    padding 10px 22px
                     cursor pointer
-                    font-size 16px
+                    font-size 18px
                     color white
                     border-radius 4px
                     transition 0.3s ease all

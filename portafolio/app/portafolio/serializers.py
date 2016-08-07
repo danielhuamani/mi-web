@@ -47,7 +47,7 @@ class ExperienciaSerializers(serializers.ModelSerializer):
         return experiencia.fecha_termino.strftime("%m/%d/%Y")
 
     def truncate_descripcion(self, experiencia):
-        truncate = experiencia.descripcion[:90] + "..."
+        truncate = experiencia.descripcion[:150] + "..."
         return truncate
 
     def logo_thumbnail(self, experiencia):

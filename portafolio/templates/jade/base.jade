@@ -29,16 +29,18 @@ html(lang="en")
                     nav.menu-principal
                         ul
 
+                            li.active
+                                a(href="#presentacion") Home
                             li
-                                a(href="") Home
+                                a(href="#perfil") Acerca de mi
                             li
-                                a(href="") Experiencia
+                                a(href="#experiencia") Experiencia
                             li
-                                a(href="") Portafolio
+                                a(href="#portafolio") Portafolio
                             li
-                                a(href="") Contacto
-                            li
-                                a(href="") Certificados
+                                a(href="#contacto") Contacto
+                            //- li
+                            //-     a(href="") Certificados
                             li
                                 a(href="") Blog
             section#presentacion
@@ -49,6 +51,8 @@ html(lang="en")
                 .cnt-general
                     .copyright.
                         Daniel Huamani
+            block js
 
 
         <script src="{{STATIC_URL}}jsx/home.jsx" type="text/babel"></script>
+
