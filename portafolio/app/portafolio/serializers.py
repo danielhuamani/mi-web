@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from sorl.thumbnail import get_thumbnail
-from .models import Perfil, Redes, Estudios, Skill, Experiencia, Categoria, Proyecto
+from .models import Perfil, Redes, Estudios, Skill, Experiencia, Categoria, Proyecto, TipoSkill
 
 
 class PerfilSerializer(serializers.ModelSerializer):
@@ -32,6 +32,14 @@ class SkillSerializers(serializers.ModelSerializer):
     class Meta:
         model = Skill
         fiels = ['nombre', 'porcentaje', 'icon']
+
+
+class TipoSkillSerializers(serializers.ModelSerializer):
+    tipo_skill_set = SkillSerializers(many=True)
+
+    class Meta:
+        model = TipoSkill
+        fields = ['nombre', 'posicion', 'tipo_skill_set', 'id']
 
 
 class ExperienciaSerializers(serializers.ModelSerializer):

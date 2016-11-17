@@ -2,11 +2,11 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .models import Perfil, Redes, Estudios, Skill, Experiencia, Categoria, Proyecto
+from .models import Perfil, Redes, Estudios, Skill, Experiencia, Categoria, Proyecto, TipoSkill
 
 from .serializers import (PerfilSerializer, RedesSerializers,
                           EstudiosSerializers, SkillSerializers,
-                          ExperienciaSerializers, CategoriaSerializers, ProyectoSerializers)
+                          ExperienciaSerializers, CategoriaSerializers, ProyectoSerializers, TipoSkillSerializers)
 
 
 @api_view(['GET'])
@@ -28,8 +28,8 @@ def redes(request):
 @api_view(['GET'])
 def skills(request):
     if request.method == "GET":
-        skills = Skill.objects.all().order_by("porcentaje")
-        serializer = SkillSerializers(skills, many=True)
+        skills = TipoSkill.objects.all().order_by("posicion")
+        serializer = TipoSkillSerializers(skills, many=True)
         return Response(serializer.data)
 
 

@@ -203,6 +203,7 @@ var app = app || {};
       );
     }
   });
+
   app.SkillReact = React.createClass({
 
     render: function () {
@@ -212,15 +213,36 @@ var app = app || {};
         { className: "skill" },
         React.createElement(
           "div",
-          { className: "title-skill", style: { width: percentage } },
+          { className: "title-skill" },
           React.createElement(
             "span",
             null,
             React.createElement("i", { className: this.props.data.icon }),
-            this.props.data.nombre,
-            " - ",
-            percentage
+            this.props.data.nombre
           )
+        )
+      );
+    }
+  });
+  app.TipoSkill = React.createClass({
+    render: function () {
+      var title_tipo_skill = this.props.data.nombre;
+      var skillList = this.props.data.tipo_skill_set.map(result => {
+
+        return React.createElement(app.SkillReact, { key: result.id, data: result });
+      });
+      return React.createElement(
+        "div",
+        { className: "tipo-skill" },
+        React.createElement(
+          "h3",
+          { className: "title-tipo-skill" },
+          title_tipo_skill
+        ),
+        React.createElement(
+          "div",
+          { className: "cnt-skill" },
+          skillList
         )
       );
     }
@@ -229,23 +251,22 @@ var app = app || {};
     mixins: [getUrlMixin],
     render: function () {
       var skills = this.state.data;
-
-      var skillList = skills.map(result => {
-
-        return React.createElement(app.SkillReact, { key: result.id, data: result });
+      var tipoSkill = skills.map(result => {
+        return React.createElement(app.TipoSkill, { key: result.id, data: result });
       });
+
       return React.createElement(
         "div",
         null,
         React.createElement(
           "h2",
           { className: "title" },
-          "MIS HABLIDADES"
+          "Competencias y Aptitudes"
         ),
         React.createElement(
           "div",
-          { className: "cnt-skill" },
-          skillList
+          { className: "cnt-tipo-skill" },
+          tipoSkill
         )
       );
     }
@@ -419,7 +440,7 @@ var app = app || {};
 
       return React.createElement(
         "div",
-        { className: "cnt-general" },
+        { className: "" },
         React.createElement(
           "h2",
           { className: "title" },

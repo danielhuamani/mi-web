@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.db import models
 from sorl.thumbnail import ImageField
+from .constants import CHOICES_TIPO
 
 
 class Perfil(models.Model):
@@ -47,10 +48,23 @@ class Redes(models.Model):
         return self.bitbucket
 
 
+class TipoSkill(models.Model):
+    nombre = models.CharField("Nombre", max_length=120)
+    posicion = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        verbose_name = "TipoSkill"
+        verbose_name_plural = "TipoSkills"
+
+    def __str__(self):
+        return self.nombre
+
+
 class Skill(models.Model):
     nombre = models.CharField("Nombre", max_length=120)
     porcentaje = models.PositiveIntegerField("Porcentaje")
     icon = models.CharField("Icon", max_length=120)
+    tipo_skill = models.ForeignKey(TipoSkill, related_name="tipo_skill_set", null=True)
 
     class Meta:
         verbose_name = "Skill"

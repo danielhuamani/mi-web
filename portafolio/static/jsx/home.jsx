@@ -101,17 +101,41 @@ var app = app || {};
       );
     }
   });
+
   app.SkillReact = React.createClass({
 
     render: function(){
       var percentage = this.props.data.porcentaje + '%';
       return(
         <div className="skill">
-          <div className="title-skill" style={{width : percentage}} >
+          <div className="title-skill" >
             <span>
               <i className={this.props.data.icon}></i>
-              {this.props.data.nombre} - {percentage}
+              {this.props.data.nombre}
             </span>
+          </div>
+        </div>
+      )
+    }
+  });
+  app.TipoSkill = React.createClass({
+    render: function(){
+      var title_tipo_skill = this.props.data.nombre
+      var skillList = this.props.data.tipo_skill_set.map(result => {
+
+        return (
+          <app.SkillReact key={result.id} data={result} />
+        );
+      });
+      return(
+        <div className="tipo-skill">
+          <h3 className="title-tipo-skill">
+          {title_tipo_skill}
+
+          </h3>
+
+          <div className="cnt-skill">
+            {skillList}
           </div>
         </div>
       )
@@ -121,20 +145,19 @@ var app = app || {};
     mixins: [getUrlMixin],
     render: function(){
       var skills = this.state.data;
-
-      var skillList = skills.map(result => {
-
+      var tipoSkill = skills.map(result => {
         return (
-          <app.SkillReact key={result.id} data={result} />
+          <app.TipoSkill key={result.id} data={result} />
         );
-      });
+      })
+
       return(
         <div>
           <h2 className="title">
-            MIS HABLIDADES
+            Competencias y Aptitudes
           </h2>
-          <div className="cnt-skill">
-             {skillList}
+          <div className="cnt-tipo-skill">
+             {tipoSkill}
           </div>
         </div>
       )
@@ -268,7 +291,7 @@ var app = app || {};
       });
 
       return(
-        <div className="cnt-general">
+        <div className="">
             <h2 className="title">Portafolio</h2>
           <div className="proyectos">
             {proyectosList}
