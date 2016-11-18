@@ -269,7 +269,8 @@ h2.title
                     font-family open
                     font-size 14px
 #experiencia
-    padding-top 50px
+    padding-bottom 30px
+    padding-top 40px
     .cnt-general
         text-align center
         .cnt-modal
@@ -401,7 +402,9 @@ h2.title
                             font-size 14px
 #portafolio
     text-align center
-    padding-top 20px
+    padding-top 40px
+    padding-bottom 20px
+    background c-crema
     .categorias
         margin-bottom 50px
         ul
@@ -425,9 +428,11 @@ h2.title
         flex-wrap wrap
         justify-content space-between
         .proyecto
-            width 25%
+            width 30%
             position relative
             cursor pointer
+            margin-bottom 30px
+            box-shadow 0px 1px 8px 0px rgba(39,49,65,0.2)
             figure
 
                 img
@@ -435,19 +440,19 @@ h2.title
                     width 100%
                     height auto
                     display block
-            h3.titulo-proyecto
-                position absolute
-                left 0px
-                right 0px
-                margin auto
-                top 30%
-                font-family lato
-                opacity 0
-                z-index 20
-                transition 0.4s ease all
-                color c-blanco
-                padding 0px 10px
-                font-size 18px
+            .descripcion-proyecto
+                padding 8px
+                background c-blanco
+                border-top 3px solid c-rojo
+                /*box-shadow 0px 2px 3px rgb(238, 238, 238)*/
+                h3.titulo-proyecto
+                    text-align left
+                    font-family lato
+                    z-index 20
+                    transition 0.4s ease all
+                    color c-plomo
+
+                    font-size 18px
             .capa
                 background c-rojo
                 position absolute
@@ -460,12 +465,12 @@ h2.title
                 opacity 0
                 z-index 10
                 transition 0.2s ease all
-            &:hover
+           /* &:hover
                 .capa
                     opacity 0.7
                 h3.titulo-proyecto
                     opacity 1
-                    top 45%
+                    top 45%*/
     .paginacion
         margin-top 20px
 
@@ -489,7 +494,7 @@ section#contacto
     background-image url("../img/img-contacto.jpg")
     padding-top 40px
     padding-bottom 30px
-    margin-top 40px
+
     background-size cover
     position relative
     // height 400px

@@ -410,19 +410,26 @@ var app = app || {};
     render: function () {
       console.log(this.props.data.imagen);
       return React.createElement(
-        "a",
-        { className: "proyecto", href: this.props.data.url },
+        "div",
+        { className: "proyecto" },
         React.createElement(
-          "figure",
-          null,
-          React.createElement("img", { src: this.props.data.image, width: "300" })
+          "a",
+          { className: "", href: this.props.data.url },
+          React.createElement(
+            "figure",
+            null,
+            React.createElement("img", { src: this.props.data.image, width: "300" })
+          )
         ),
         React.createElement(
-          "h3",
-          { className: "titulo-proyecto" },
-          this.props.data.nombre
-        ),
-        React.createElement("div", { className: "capa" })
+          "div",
+          { className: "descripcion-proyecto" },
+          React.createElement(
+            "h3",
+            { className: "titulo-proyecto" },
+            this.props.data.nombre
+          )
+        )
       );
     }
 
@@ -440,7 +447,7 @@ var app = app || {};
 
       return React.createElement(
         "div",
-        { className: "" },
+        { className: "cnt-general" },
         React.createElement(
           "h2",
           { className: "title" },

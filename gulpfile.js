@@ -24,7 +24,7 @@ gulp.task("babel", function(){
       .pipe(babel({
           plugins: ['transform-react-jsx']
       }))
-      .pipe(gulp.dest("portafolio/static/app/"))
+      .pipe(gulp.dest("portafolio/static/jsx/"))
       .pipe(connect.reload());
 });
 

@@ -267,11 +267,15 @@ var app = app || {};
     render: function(){
       console.log(this.props.data.imagen);
       return(
-        <a className="proyecto" href={this.props.data.url}>
-          <figure><img src={this.props.data.image} width="300" /></figure>
-          <h3 className="titulo-proyecto">{this.props.data.nombre}</h3>
-          <div className="capa"></div>
-        </a>
+        <div className="proyecto" >
+          <a className="" href={this.props.data.url}>
+            <figure><img src={this.props.data.image} width="300" /></figure>
+          </a>
+          <div className="descripcion-proyecto">
+            <h3 className="titulo-proyecto">{this.props.data.nombre}</h3>
+          </div>
+
+        </div>
       )
     }
 
@@ -291,7 +295,7 @@ var app = app || {};
       });
 
       return(
-        <div className="">
+        <div className="cnt-general">
             <h2 className="title">Portafolio</h2>
           <div className="proyectos">
             {proyectosList}
