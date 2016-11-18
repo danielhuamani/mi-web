@@ -77,7 +77,7 @@ class ProyectoSerializers(serializers.ModelSerializer):
     def logo_thumbnail(self, proyecto):
         logo_thum = ''
         if proyecto.image:
-            logo_thum = get_thumbnail(proyecto.image, '300x220', crop='center', quality=100)
+            logo_thum = get_thumbnail(proyecto.image, '360x200', crop='center', quality=100)
             logo_thum = logo_thum.url
         return str(logo_thum)
 
