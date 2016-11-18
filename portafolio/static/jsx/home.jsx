@@ -269,7 +269,7 @@ var app = app || {};
       return(
         <div className="proyecto" >
           <a className="" href={this.props.data.url}>
-            <figure><img src={this.props.data.image} width="300" /></figure>
+            <figure><img src={this.props.data.image_crop}  /></figure>
           </a>
           <div className="descripcion-proyecto">
             <h3 className="titulo-proyecto">{this.props.data.nombre}</h3>

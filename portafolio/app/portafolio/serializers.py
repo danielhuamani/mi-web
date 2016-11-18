@@ -72,10 +72,18 @@ class ExperienciaSerializers(serializers.ModelSerializer):
 
 
 class ProyectoSerializers(serializers.ModelSerializer):
+    image_crop = serializers.SerializerMethodField("logo_thumbnail")
+
+    def logo_thumbnail(self, proyecto):
+        logo_thum = ''
+        if proyecto.image:
+            logo_thum = get_thumbnail(proyecto.image, '300x220', crop='center', quality=100)
+            logo_thum = logo_thum.url
+        return str(logo_thum)
 
     class Meta:
         model = Proyecto
-        fields = ['nombre', 'image', 'id', 'url']
+        fields = ['nombre', 'image', 'id', 'url', 'image_crop']
 
 
 class CategoriaSerializers(serializers.ModelSerializer):

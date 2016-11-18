@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from django.db import models
 from sorl.thumbnail import ImageField
 from .constants import CHOICES_TIPO
+from sorl.thumbnail import get_thumbnail
 
 
 class Perfil(models.Model):
@@ -112,6 +113,10 @@ class Proyecto(models.Model):
     class Meta:
         verbose_name = 'proyectos'
         verbose_name_plural = 'proyectoss'
+
+    def crop(self):
+        img = get_thumbnail(self.image, '200x200', crop='center', quality=99)
+        return img
 
     def __str__(self):
         return self.nombre

@@ -418,7 +418,7 @@ var app = app || {};
           React.createElement(
             "figure",
             null,
-            React.createElement("img", { src: this.props.data.image, width: "300" })
+            React.createElement("img", { src: this.props.data.image_crop })
           )
         ),
         React.createElement(
