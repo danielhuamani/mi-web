@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import Perfil, Redes, Estudios, Skill, Experiencia, Categoria, Proyecto, TipoSkill
+from .models import Perfil, Redes, Estudios, Skill, Experiencia, Categoria, Proyecto, Tags, TipoSkill
 
 
 class PerfilAdmin(SummernoteModelAdmin):
@@ -19,3 +19,4 @@ admin.site.register(Experiencia, ExperienciaAdmin)
 admin.site.register(Categoria)
 admin.site.register(Proyecto)
 admin.site.register(TipoSkill)
+admin.site.register(Tags)

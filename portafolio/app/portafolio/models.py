@@ -103,6 +103,18 @@ class Categoria(models.Model):
         return self.nombre
 
 
+class Tags(models.Model):
+    nombre = models.CharField("Nombre", max_length=120)
+    posicion = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        verbose_name = "Tags"
+        verbose_name_plural = "Tagss"
+
+    def __str__(self):
+        return self.nombre
+
+
 class Proyecto(models.Model):
     categoria = models.ForeignKey(Categoria, related_name="categoria_proyecto")
     nombre = models.CharField("Nombre", max_length=120)
@@ -110,6 +122,7 @@ class Proyecto(models.Model):
     posicion = models.PositiveIntegerField(default=0)
     url = models.URLField("Url", blank=True)
     descripcion = models.CharField("Descripcion", max_length=255)
+    tags = models.ManyToManyField(Tags, related_name="tags_set", null=True)
 
     class Meta:
         verbose_name = 'proyectos'
@@ -121,3 +134,4 @@ class Proyecto(models.Model):
 
     def __str__(self):
         return self.nombre
+

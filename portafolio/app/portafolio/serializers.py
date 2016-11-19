@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from sorl.thumbnail import get_thumbnail
-from .models import Perfil, Redes, Estudios, Skill, Experiencia, Categoria, Proyecto, TipoSkill
+from .models import Perfil, Redes, Estudios, Skill, Experiencia, Categoria, Proyecto, TipoSkill, Tags
 
 
 class PerfilSerializer(serializers.ModelSerializer):
@@ -71,7 +71,15 @@ class ExperienciaSerializers(serializers.ModelSerializer):
         fields = ['nombre', 'f_inicio', 'f_termino', 'url', 'descripcion', 'trun_descripcion', 'id', 'logo', 'logo_t']
 
 
+class TagsSerializers(serializers.ModelSerializer):
+
+    class Meta:
+        model = Tags
+        fields = ['id', 'posicion', 'nombre']
+
+
 class ProyectoSerializers(serializers.ModelSerializer):
+    tags = TagsSerializers(many=True)
     image_crop = serializers.SerializerMethodField("logo_thumbnail")
 
     def logo_thumbnail(self, proyecto):
@@ -83,7 +91,7 @@ class ProyectoSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Proyecto
-        fields = ['nombre', 'image', 'id', 'url', 'image_crop', 'descripcion']
+        fields = ['nombre', 'image', 'id', 'url', 'image_crop', 'descripcion', 'tags']
 
 
 class CategoriaSerializers(serializers.ModelSerializer):

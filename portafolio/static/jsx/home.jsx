@@ -263,9 +263,21 @@ var app = app || {};
       )
     }
   })
+  app.TagsReact = React.createClass({
+    render: function(){
+      return(
+        <span>{this.props.tags.nombre}</span>
+      )
+    }
+  })
   app.ProyectoReact = React.createClass({
     render: function(){
-      console.log(this.props.data.imagen);
+      var tags = this.props.data.tags;
+      var tagsList = tags.map(result => {
+        return(
+           <app.TagsReact key={result.id} tags={result} />
+          )
+      })
       return(
         <div className="proyecto" >
           <a className="" href={this.props.data.url}>
@@ -275,6 +287,9 @@ var app = app || {};
             <h3 className="titulo-proyecto">{this.props.data.nombre}</h3>
             <div className="descripcion">
               <p><strong>Trabajo:</strong> {this.props.data.descripcion}</p>
+            </div>
+            <div className="tags">
+              {tagsList}
             </div>
           </div>
 

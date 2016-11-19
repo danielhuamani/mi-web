@@ -406,9 +406,21 @@ var app = app || {};
       );
     }
   });
+  app.TagsReact = React.createClass({
+    render: function () {
+      return React.createElement(
+        "span",
+        null,
+        this.props.tags.nombre
+      );
+    }
+  });
   app.ProyectoReact = React.createClass({
     render: function () {
-      console.log(this.props.data.imagen);
+      var tags = this.props.data.tags;
+      var tagsList = tags.map(result => {
+        return React.createElement(app.TagsReact, { key: result.id, tags: result });
+      });
       return React.createElement(
         "div",
         { className: "proyecto" },
@@ -443,6 +455,11 @@ var app = app || {};
               " ",
               this.props.data.descripcion
             )
+          ),
+          React.createElement(
+            "div",
+            { className: "tags" },
+            tagsList
           )
         )
       );
