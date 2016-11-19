@@ -1,46 +1,8 @@
 extends jade/base.jade
 block content
-
-    section#perfil
-        .cnt-general
-            h2.title.
-                ACERCA DE MI
-        .cnt-general#perfil-detalle
-
-        .cnt-general.mis-hablidades#mis-habilidades
+    #page
 
 
-
-
-
-    section#experiencia
-
-
-
-    section#portafolio
-
-
-
-
-        //- .proyectos
-        //-     .proyecto
-        //-         figure
-        //-             img(src="../../static/img/proyect.jpg", width="300")
-        //-         h3.titulo-proyecto.
-        //-             Carroreceruas agn Carroreceruas agn
-        //-         .capa
-
-        //- .cnt-general.paginacion
-        //-     ul
-        //-         li
-        //-             a(href="").
-        //-                 1
-        //-         li
-        //-             a(href="").
-        //-                 2
-        //-         li
-        //-             a(href="").
-        //-                 3
     section#contacto
         .cnt-general.contacto
             h2.title.
@@ -84,8 +46,7 @@ block js
              */
             $("nav a").click(function(evn){
                 evn.preventDefault();
-                console.log("-------------");
-                console.log(this.hash);
+
                 $('html,body').scrollTo(this.hash, this.hash);
             });
 

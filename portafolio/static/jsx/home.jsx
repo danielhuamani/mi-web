@@ -4,21 +4,29 @@ var app = app || {};
   "use strict";
   var getUrlMixin = {
     getInitialState: function() {
-      return {data: []};
+      return {data_redes:[], data_perfil:[], data_skill:[], data_experiencia:[], data_proyecto:[]};
     },
-    componentDidMount: function() {
+    componentDidMount  : function() {
       // this.loadCommentsFromServer();
       $.get(this.props.url, function (result) {
-        this.setState({data: result});
+
+        this.setState({
+
+          data_redes: result.redes,
+          data_perfil: result.perfil,
+          data_skill: result.skill,
+          data_experiencia: result.experiencia,
+          data_proyecto: result.proyecto
+        });
       }.bind(this));
 
     },
   }
   app.PresentacionRedesReact = React.createClass({
 
-    mixins: [getUrlMixin],
+
     render: function() {
-      var red = this.state.data;
+      var red = this.props.url;
 
 
       return (
@@ -70,7 +78,7 @@ var app = app || {};
   app.PresentacionPerfilReact = React.createClass({
     mixins: [getUrlMixin],
     render: function(){
-      var perfil = this.state.data;
+      var perfil = this.props.url;
       return (
         <div>
 
@@ -144,7 +152,7 @@ var app = app || {};
   app.SkillListReact = React.createClass({
     mixins: [getUrlMixin],
     render: function(){
-      var skills = this.state.data;
+      var skills = this.props.url;
       var tipoSkill = skills.map(result => {
         return (
           <app.TipoSkill key={result.id} data={result} />
@@ -215,12 +223,12 @@ var app = app || {};
         };
     },
     changeModal: function(id) {
-        console.log(id);
+
         this.setState({ currentModal: id });
     },
 
     render: function(){
-      var experiencia = this.state.data
+      var experiencia = this.props.url
       var experienciaList = experiencia.map(result => {
         return(
           <app.ExperienciaReact key={result.id} data={result} currentModal={this.state.currentModal}  changeModal={this.changeModal} />
@@ -233,24 +241,21 @@ var app = app || {};
       });
       return (
         <div>
-          <div className="cnt-general">
+
             <h2 className="title">EXPERIENCIA</h2>
-          </div>
-          <div className="cnt-general">
+
+
             <div className="cnt-exp">
               {experienciaList}
             </div>
             <div className="cnt-modal">
               {modalList}
             </div>
-          </div>
+
         </div>
       )
     }
   })
-
-
-
 
   app.CategoriaReact = React.createClass({
     render: function(){
@@ -303,7 +308,7 @@ var app = app || {};
 
     render: function(){
 
-      var proyectos = this.state.data;
+      var proyectos = this.props.url;
 
       var proyectosList = proyectos.map(result => {
         return(
@@ -324,24 +329,57 @@ var app = app || {};
     }
 
   })
+  app.HomeReact = React.createClass({
+    mixins: [getUrlMixin],
+    render: function(){
+      var data_redes = this.state.data_redes;
+      var data_perfil = this.state.data_perfil;
+      var data_skill = this.state.data_skill;
+      var data_experiencia = this.state.data_experiencia;
+      var data_proyecto = this.state.data_proyecto;
+
+
+
+      return(
+        <div className="main">
+          <section id="presentacion">
+            <div className="cnt-general">
+              <app.PresentacionRedesReact  url={data_redes} />
+            </div>
+          </section>
+          <section id="perfil">
+            <div className="cnt-general">
+              <h2 className="title">
+                ACERCA DE MI
+              </h2>
+              <div className="" id="perfil-detalle">
+                <app.PresentacionPerfilReact  url={data_perfil} />
+              </div>
+              <div className="mis-habilidades" id="mis-habilidades">
+                <app.SkillListReact  url={data_skill} />
+              </div>
+            </div>
+          </section>
+          <section id="experiencia">
+            <div className="cnt-general">
+              <app.ExperienciaListReact url={data_experiencia} />,
+            </div>
+          </section>
+          <section id="portafolio">
+            <div className="cnt-general">
+              <app.PortafolioReact url={data_proyecto} />,
+            </div>
+          </section>
+
+
+        </div>
+      )
+    }
+  });
   ReactDOM.render(
-    <app.PresentacionRedesReact url="/api/redes/" />,
-    document.querySelector("#presentacion .cnt-general")
+    <app.HomeReact url="/api/api_home/" />,
+    document.getElementById("page")
   );
-  ReactDOM.render(
-    <app.PresentacionPerfilReact url="/api/perfil/" />,
-    document.getElementById("perfil-detalle")
-  );
-  ReactDOM.render(
-    <app.SkillListReact url="/api/skills/" />,
-    document.getElementById("mis-habilidades")
-  );
-  ReactDOM.render(
-    <app.ExperienciaListReact url="/api/experiencias/" />,
-    document.getElementById("experiencia")
-  );
-  ReactDOM.render(
-    <app.PortafolioReact url="/api/proyectos/" />,
-    document.getElementById("portafolio")
-  )
+
+
 })();

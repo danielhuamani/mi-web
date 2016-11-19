@@ -57,5 +57,28 @@ def categorias(request):
         return Response(serializers.data)
 
 
+@api_view(['GET'])
+def api_home(request):
+    if request.method == 'GET':
+        data = {}
+        perfil_c, create = Perfil.objects.get_or_create(pk=1)
+        serializer = PerfilSerializer(perfil_c)
+        redes_r, create_r = Redes.objects.get_or_create(pk=1)
+        serializer_r = RedesSerializers(redes_r)
+        skills = TipoSkill.objects.all().order_by("posicion")
+        serializer_s = TipoSkillSerializers(skills, many=True)
+        experiencias = Experiencia.objects.all().order_by('fecha_inicio')
+        serializers_e = ExperienciaSerializers(experiencias, many=True)
+        proyectos = Proyecto.objects.all().order_by('posicion')
+        serializers_p = ProyectoSerializers(proyectos, many=True)
+        data["perfil"] = serializer.data
+        data["redes"] = serializer_r.data
+        data["skill"] = serializer_s.data
+        data["experiencia"] = serializers_e.data
+        data["proyecto"] = serializers_p.data
+
+        return Response(data)
+
+
 def home(request):
     return render(request, "jade/perfil.jade", locals())
