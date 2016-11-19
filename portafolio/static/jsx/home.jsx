@@ -273,6 +273,9 @@ var app = app || {};
           </a>
           <div className="descripcion-proyecto">
             <h3 className="titulo-proyecto">{this.props.data.nombre}</h3>
+            <div className="descripcion">
+              <p><strong>Trabajo:</strong> {this.props.data.descripcion}</p>
+            </div>
           </div>
 
         </div>

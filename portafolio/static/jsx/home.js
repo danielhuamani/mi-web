@@ -428,6 +428,21 @@ var app = app || {};
             "h3",
             { className: "titulo-proyecto" },
             this.props.data.nombre
+          ),
+          React.createElement(
+            "div",
+            { className: "descripcion" },
+            React.createElement(
+              "p",
+              null,
+              React.createElement(
+                "strong",
+                null,
+                "Trabajo:"
+              ),
+              " ",
+              this.props.data.descripcion
+            )
           )
         )
       );

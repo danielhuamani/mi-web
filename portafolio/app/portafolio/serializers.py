@@ -83,7 +83,7 @@ class ProyectoSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Proyecto
-        fields = ['nombre', 'image', 'id', 'url', 'image_crop']
+        fields = ['nombre', 'image', 'id', 'url', 'image_crop', 'descripcion']
 
 
 class CategoriaSerializers(serializers.ModelSerializer):

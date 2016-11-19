@@ -109,6 +109,7 @@ class Proyecto(models.Model):
     image = models.ImageField("Imagen", upload_to="proyecto")
     posicion = models.PositiveIntegerField(default=0)
     url = models.URLField("Url", blank=True)
+    descripcion = models.CharField("Descripcion", max_length=255)
 
     class Meta:
         verbose_name = 'proyectos'
