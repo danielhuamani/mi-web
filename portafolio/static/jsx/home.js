@@ -7,9 +7,9 @@ var app = app || {};
     getInitialState: function () {
       return { data_redes: [], data_perfil: [], data_skill: [], data_experiencia: [], data_proyecto: [] };
     },
-    componentDidMount: function () {
+    componentWillMount: function () {
       // this.loadCommentsFromServer();
-      $.get(this.props.url, function (result) {
+      $.get("/api/api_home/", function (result) {
 
         this.setState({
 
@@ -102,7 +102,7 @@ var app = app || {};
   });
 
   app.PresentacionPerfilReact = React.createClass({
-    mixins: [getUrlMixin],
+
     render: function () {
       var perfil = this.props.url;
       return React.createElement(
@@ -255,7 +255,7 @@ var app = app || {};
     }
   });
   app.SkillListReact = React.createClass({
-    mixins: [getUrlMixin],
+
     render: function () {
       var skills = this.props.url;
       var tipoSkill = skills.map(result => {
@@ -351,7 +351,7 @@ var app = app || {};
     }
   });
   app.ExperienciaListReact = React.createClass({
-    mixins: [getUrlMixin],
+
     getInitialState: function () {
       return {
         currentModal: 0
@@ -466,7 +466,6 @@ var app = app || {};
 
   });
   app.PortafolioReact = React.createClass({
-    mixins: [getUrlMixin],
 
     render: function () {
 
@@ -560,5 +559,5 @@ var app = app || {};
       );
     }
   });
-  ReactDOM.render(React.createElement(app.HomeReact, { url: "/api/api_home/" }), document.getElementById("page"));
+  ReactDOM.render(React.createElement(app.HomeReact, null), document.getElementById("page"));
 })();
